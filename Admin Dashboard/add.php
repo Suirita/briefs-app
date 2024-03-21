@@ -81,18 +81,28 @@
                 </div>
             </section>
             <section>
-                <form action="" method="get">
-                    <h1>Add a new brief</h1>
-                    <label for="brief_title">Brief Title</label><br>
-                    <input type="text" id="brief_title" name="brief_title"><br>
-                    <label for="brief_start_date">Start Date</label>
-                    <input type="date" id="brief_start_date" name="brief_start_date">
-                    <label for="brief_end_date">End Date</label>
-                    <input type="date" id="brief_end_date" name="brief_end_date">
-                    <label for=" brief_URL">Brief URL</label><br>
-                    <input type="url" id="brief_URL" name="brief_URL"><br>
-                    <input type="submit" value="Add Brief" name="submit">
-                </form>
+                <div class="form_container">
+                    <form action="" method="get">
+                        <h1 class="adding_brief_title">Add a new brief</h1>
+                        <div class="input-div one">
+                            <div class="div">
+                                <label for="brief_title">Brief Title</label><br>
+                                <input type="text" class="input" id="brief_title" name="brief_title">
+                            </div>
+                        </div>
+                        <label for="brief_start_date">Start Date</label>
+                        <input type="date" id="brief_start_date" name="brief_start_date">
+                        <label for="brief_end_date">End Date</label>
+                        <input type="date" id="brief_end_date" name="brief_end_date">
+                        <div class="input-div one">
+                            <div class="div">
+                                <label for=" brief_URL">Brief URL</label><br>
+                                <input type="url" class="input" id="brief_URL" name="brief_URL"><br>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn" value="Add Brief" name="submit">
+                    </form>
+                </div>
             </section>
         </main>
     </div>
