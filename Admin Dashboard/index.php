@@ -13,10 +13,10 @@
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
+        <nav class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#main">
                         <span class="icon">
                             <ion-icon name="code-slash-outline"></ion-icon>
                         </span>
@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="#main">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -34,16 +34,16 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/briefs app/briefs-app/admin dashboard/add.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
-                        <span class="title">Add Briefs</span>
+                        <span class="title">Add</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/briefs app/briefs-app/admin dashboard/update.php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
@@ -52,7 +52,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/briefs app/briefs-app/login/index.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -60,11 +60,11 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </nav>
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
+        <main class="main" id="main">
+            <section class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
@@ -79,10 +79,10 @@
                 <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
-            </div>
+            </section>
 
             <!-- ======================= Cards ================== -->
-            <div class="cardBox">
+            <section class="cardBox">
 
                 <div class="card">
                     <div>
@@ -129,10 +129,10 @@
                         <ion-icon name="-outline"></ion-icon>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- ================ brief state List ================= -->
-            <div class="state">
+            <section class="state">
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Brief State</h2>
@@ -208,8 +208,8 @@
                     </table>
                 </div>
 
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
     <!-- =========== Scripts =========  -->
