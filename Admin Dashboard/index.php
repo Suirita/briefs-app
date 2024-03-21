@@ -17,7 +17,7 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="logo-apple"></ion-icon>
+                            <ion-icon name="code-slash-outline"></ion-icon>
                         </span>
                         <span class="title">Brand Name</span>
                     </a>
@@ -35,45 +35,23 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="people-outline"></ion-icon>
+                            <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Add Briefs</span>
                     </a>
                 </li>
+
+
+
+
+
 
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
+                            <ion-icon name="create-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
+                        <span class="title">Update</span>
                     </a>
                 </li>
 
@@ -109,47 +87,50 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                <div class="card">
-                    <div>
-                        <div class="numbers">1,504</div>
-                        <div class="cardName">Daily Views</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
 
                 <div class="card">
                     <div>
+                        <!-- PHP NUMBER -->
                         <div class="numbers">80</div>
-                        <div class="cardName">Sales</div>
+                        <div class="cardName">Trainers</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="person-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
+                        <!-- PHP NUMBER -->
+                        <div class="numbers">1,504</div>
+                        <div class="cardName">Learners</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="card">
+                    <div>
+                        <!-- PHP NUMBER -->
                         <div class="numbers">284</div>
-                        <div class="cardName">Comments</div>
+                        <div class="cardName">Briefs</div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <ion-icon name="book-outline"></ion-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
+                        <div class="numbers"></div>
+                        <div class="cardName"></div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
+                        <ion-icon name="-outline"></ion-icon>
                     </div>
                 </div>
             </div>
@@ -158,25 +139,24 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>Brief State</h2>
                     </div>
 
                     <table>
                         <thead>
                             <tr>
                                 <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
+                                <td>Groupe</td>
+                                <td>Brief</td>
                                 <td>Status</td>
                             </tr>
                         </thead>
-
+                        <!-- PHP LOOP -->
                         <tbody>
                             <tr>
                                 <td>Star Refrigerator</td>
                                 <td>$1200</td>
-                                <td>Paid</td>
+                                <td>Bla bla bla bla</td>
                                 <td><span class="status delivered">Delivered</span></td>
                             </tr>
 
@@ -233,7 +213,7 @@
                 </div>
 
                 <!-- ================= New Customers ================ -->
-                <div class="recentCustomers">
+                <!-- <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>Recent Customers</h2>
                     </div>
@@ -311,7 +291,7 @@
                             </td>
                         </tr>
                     </table>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
