@@ -12,7 +12,6 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-    <!-- =============== Navigation ================ -->
 
     <div class="container">
         <nav class="navigation">
