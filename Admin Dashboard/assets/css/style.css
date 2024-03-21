@@ -258,20 +258,15 @@ body {
   color: var(--white);
 }
 
-/* ================== Order Details List ============== */
-.details {
+/* ================== brief stae List ============== */
+.state {
   position: relative;
   width: 100%;
   padding: 20px;
-  /* display: grid; */
-  /* grid-template-columns: 2fr 1fr;
-  grid-gap: 30px; */
-  /* margin-top: 10px; */
 }
 
-.details .recentOrders {
+.state .recentOrders {
   position: relative;
-  /* display: grid; */
   min-height: 500px;
   background: var(--white);
   padding: 20px;
@@ -279,7 +274,7 @@ body {
   border-radius: 20px;
 }
 
-.details .cardHeader {
+.state .cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -297,38 +292,38 @@ body {
   border-radius: 6px;
 }
 
-.details table {
+.state table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
-.details table thead td {
+.state table thead td {
   font-weight: 600;
 }
-.details .recentOrders table tr {
+.state .recentOrders table tr {
   color: var(--black1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
-.details .recentOrders table tr:last-child {
+.state .recentOrders table tr:last-child {
   border-bottom: none;
 }
-.details .recentOrders table tbody tr:hover {
+.state .recentOrders table tbody tr:hover {
   background: var(--blue);
   color: var(--white);
 }
-.details .recentOrders table tr td {
+.state .recentOrders table tr td {
   padding: 10px;
 }
-.details .recentOrders table tr td:last-child {
+.state .recentOrders table tr td:last-child {
   text-align: end;
 }
-.details .recentOrders table tr td:nth-child(2) {
+.state .recentOrders table tr td:nth-child(2) {
   text-align: end;
 }
-.details .recentOrders table tr td:nth-child(3) {
+.state .recentOrders table tr td:nth-child(3) {
   text-align: center;
 }
-.status.delivered {
+.status.finished {
   padding: 2px 4px;
   background: #8de02c;
   color: var(--white);
@@ -336,7 +331,7 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
-.status.pending {
+.status.to_do {
   padding: 2px 4px;
   background: #e9b10a;
   color: var(--white);
@@ -344,7 +339,7 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
-.status.return {
+.status.Not_Completed {
   padding: 2px 4px;
   background: #f00;
   color: var(--white);
@@ -359,50 +354,6 @@ body {
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
-}
-
-.recentCustomers {
-  position: relative;
-  display: grid;
-  min-height: 500px;
-  padding: 20px;
-  background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
-}
-.recentCustomers .imgBx {
-  position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  overflow: hidden;
-}
-.recentCustomers .imgBx img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.recentCustomers table tr td {
-  padding: 12px 10px;
-}
-.recentCustomers table tr td h4 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2rem;
-}
-.recentCustomers table tr td h4 span {
-  font-size: 14px;
-  color: var(--black2);
-}
-.recentCustomers table tr:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-.recentCustomers table tr:hover td h4 span {
-  color: var(--white);
 }
 
 /* ====================== Responsive Design ========================== */
@@ -427,7 +378,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .details {
+  .state {
     grid-template-columns: 1fr;
   }
   .recentOrders {
