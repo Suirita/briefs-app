@@ -61,11 +61,42 @@
                 </li>
             </ul>
         </nav>
-        <!-- =============== Main ================ -->
-        <main id="main">
+
+        <!-- ========================= Main ==================== -->
+        <main class="main" id="main">
+            <section class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="assets/imgs/customer01.jpg" alt="">
+                </div>
+            </section>
+            <section>
+                <form action="" method="get">
+                    <h1>Add a new brief</h1>
+                    <label for="brief_title">Brief Title</label><br>
+                    <input type="text" id="brief_title" name="brief_title"><br>
+                    <label for="brief_start_date">Start Date</label>
+                    <input type="date" id="brief_start_date" name="brief_start_date">
+                    <label for="brief_end_date">End Date</label>
+                    <input type="date" id="brief_end_date" name="brief_end_date">
+                    <label for=" brief_URL">Brief URL</label><br>
+                    <input type="url" id="brief_URL" name="brief_URL"><br>
+                    <input type="submit" value="Add Brief" name="submit">
+                </form>
+            </section>
         </main>
     </div>
-    
+
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
 
