@@ -11,7 +11,6 @@
 	<img class="wave" src="assets/img/wave.png">
 	<div class="container">
 		<div class="img">
-			<img src="assets/img/bg.png">
 		</div>
 		<div class="login-content">
 			<form action="index.html">
