@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BriefSolicode | Admin Dashboard</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/update.css">
+    <link rel="stylesheet" href="assets/css/edit.css">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a href="/briefs app/briefs-app/admin dashboard/index.php">
+                    <a href="././index.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -47,7 +47,7 @@
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
-                        <span class="title">Update</span>
+                        <span class="title">Edit</span>
                     </a>
                 </li>
 
@@ -80,7 +80,15 @@
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </section>
-            <section></section>
+            <section>
+                <div class="cards-container">
+                    <div class="card">
+                        <h1>Title</h1>
+                        <span>Start Date: 00/00/0000</span>
+                        <span>End Date: 00/00/0000</span>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 

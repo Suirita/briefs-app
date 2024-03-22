@@ -209,3 +209,39 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.cards-container {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.card > h1 {
+  color: var(--blue);
+}
+
+.card > span {
+  color: var(--black2);
+}
+
+.card:hover {
+  background: var(--blue);
+}
+
+.card:hover,
+.card:hover > h1,
+.card:hover > span {
+  color: var(--white);
+}

@@ -43,11 +43,11 @@
                 </li>
 
                 <li>
-                    <a href="./update.php">
+                    <a href="./edit.php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
-                        <span class="title">Update</span>
+                        <span class="title">Edit</span>
                     </a>
                 </li>
 
