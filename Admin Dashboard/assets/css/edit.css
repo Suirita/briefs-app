@@ -210,13 +210,27 @@ body {
   object-fit: cover;
 }
 
-.cards-container {
-  position: relative;
-  width: 100%;
+/* ===================== Cards ===================== */
+
+.briefs-container {
+  background: var(--white);
   padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  position: relative;
+  margin: 20px;
+  min-height: 500px;
+}
+
+.briefs-container > h1 {
+  color: var(--blue);
+}
+
+.cards-container {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  grid-gap: 20px;
 }
 
 .card {
@@ -228,7 +242,7 @@ body {
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
-.card > h1 {
+.card > h3 {
   color: var(--blue);
 }
 
@@ -241,7 +255,71 @@ body {
 }
 
 .card:hover,
-.card:hover > h1,
+.card:hover > h3,
 .card:hover > span {
   color: var(--white);
+}
+
+/* ====================== Responsive Design ========================== */
+
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .state {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
 }

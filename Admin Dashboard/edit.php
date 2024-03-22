@@ -81,11 +81,34 @@
                 </div>
             </section>
             <section>
-                <div class="cards-container">
-                    <div class="card">
-                        <h1>Title</h1>
-                        <span>Start Date: 00/00/0000</span>
-                        <span>End Date: 00/00/0000</span>
+                <div class="briefs-container ">
+                    <h1>Upcoming Briefs</h1>
+                    <div class="cards-container">
+                        <div class="card">
+                            <h3>Title</h3>
+                            <span>Start Date: 00/00/0000</span>
+                            <span>End Date: 00/00/0000</span>
+                        </div>
+                        <div class="card">
+                            <h3>Title</h3>
+                            <span>Start Date: 00/00/0000</span>
+                            <span>End Date: 00/00/0000</span>
+                        </div>
+                        <div class="card">
+                            <h3>Title</h3>
+                            <span>Start Date: 00/00/0000</span>
+                            <span>End Date: 00/00/0000</span>
+                        </div>
+                        <div class="card">
+                            <h3>Title</h3>
+                            <span>Start Date: 00/00/0000</span>
+                            <span>End Date: 00/00/0000</span>
+                        </div>
+                        <div class="card">
+                            <h3>Title</h3>
+                            <span>Start Date: 00/00/0000</span>
+                            <span>End Date: 00/00/0000</span>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -373,6 +373,8 @@ input[type="date"]:focus {
   background-position: right;
 }
 
+/* ====================== Responsive Design ========================== */
+
 @media (max-width: 991px) {
   .navigation {
     left: -300px;
