@@ -270,6 +270,18 @@ body {
   color: #555;
 }
 
+input[type="date"]{
+  background-color: #2678d9;
+  padding: 15px;
+  /* transform: translate(-50%, -50%); */
+  font-family:  "Ubuntu", sans-serif;
+  color: #ffff;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
 .btn {
   display: block;
   width: 100%;
