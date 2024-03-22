@@ -10,13 +10,14 @@
 </head>
 
 <body>
-	<img class="wave" src="assets/img/wave.png">
+	<img class="wave" src="./assets/img/wave.png">
 	<div class="container">
 		<div class="img">
+			<img src="./assets/img/bg.png" alt="logo" >
 		</div>
 		<div class="login-content">
-			<form action="/briefs app/briefs-app/admin dashboard/index.php">
-				<img src="assets/img/avatar.svg">
+			<form action="../Admin Dashboard/index.php" method="post">
+				<img src="./assets/img/avatar.svg" alt="avatar">
 				<h2 class="title">Welcome</h2>
 				<div class="input-div one">
 					<div class="i">
