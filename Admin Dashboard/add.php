@@ -94,11 +94,11 @@
                         </div>
                         <div class="date-form">
                             <div>
-                                <label for="brief_start_date">Start Date</label><br>
+                                <label for="brief_start_date" class="date-form-label">Start Date</label><br>
                                 <input type="date" id="brief_start_date" name="brief_start_date">
                             </div>
                             <div>
-                                <label for="brief_end_date">End Date</label><br>
+                                <label for="brief_end_date" class="date-form-label">End Date</label><br>
                                 <input type="date" id="brief_end_date" name="brief_end_date">
                             </div>
                         </div>
@@ -107,24 +107,24 @@
                                 <label for=" brief_URL">Brief URL</label>
                                 <input type="text" class="input" id="brief_URL" name="brief_URL">
                             </div>
-                            <div>
-                                <label class="checkbox">Bla Bla Bla
-                                    <input type="checkbox">
-                                    <span class="check"></span>
-                                </label>
-                                <label class="checkbox">Bla Bla Bla
-                                    <input type="checkbox">
-                                    <span class="check"></span>
-                                </label>
-                                <label class="checkbox">Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce
-                                    <input type="checkbox">
-                                    <span class="check"></span>
-                                </label>
-                                <label class="checkbox">Bla Bla Bla
-                                    <input type="checkbox">
-                                    <span class="check"></span>
-                                </label>
-                            </div>
+                        </div>
+                        <div>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
                         </div>
                         <input type="submit" class="btn" value="Add Brief" name="submit">
                     </form>

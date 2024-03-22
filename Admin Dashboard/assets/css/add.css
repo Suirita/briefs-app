@@ -218,7 +218,7 @@ body {
   align-items: center;
   margin: 20px 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  padding: 30px;
+  padding: 0 200px;
   border-radius: 20px;
 }
 
@@ -230,12 +230,13 @@ body {
   color: #1e88e1;
   position: absolute;
   left: 40px;
+  margin-top: 20px;
 }
 
 .input-div > div {
   position: relative;
   height: 45px;
-  margin: 30px 0;
+  margin: 30px 0 20px 0;
 }
 
 .input-div > div > label {
@@ -270,41 +271,53 @@ body {
   color: #555;
 }
 
-input[type="date"]{
+.date-form {
+  display: flex;
+  gap: 100px;
+  padding: 0 100px;
+}
+
+.date-form-label {
+  color: #999;
+  font-size: 18px;
+  margin-left:20px;
+  transition: color 0.3s ease;
+}
+
+input[type="date"] {
   background-color: #2678d9;
   padding: 15px;
-  /* transform: translate(-50%, -50%); */
-  font-family:  "Ubuntu", sans-serif;
-  color: #ffff;
+  font-family: "Ubuntu", sans-serif;
+  color: #fff;
   font-size: 15px;
   border: none;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   outline: none;
   border-radius: 15px;
 }
-.date-form{
-  display: flex;
-  gap: 30px;
+
+input[type="date"]:focus {
+  transform: scale(1.03);
 }
 
 .checkbox {
   position: relative;
   display: block;
-  margin-top: 5px;
+  margin: 10px;
   color: #222;
   padding-left: 45px;
   font-size: 1.2rem;
- cursor: pointer;
- 
-
-
+  cursor: pointer;
 }
-.checkbox input{
+
+.checkbox input {
   position: absolute;
   height: 0;
   width: 0;
   cursor: pointer;
 }
-.check{
+
+.check {
   position: absolute;
   height: 25px;
   width: 25px;
@@ -313,32 +326,31 @@ input[type="date"]{
   top: 0;
   left: 0;
 }
-.checkbox:hover input ~ .check{
-  border-color: transparent;
-  background-color: #f5f5f5;
+
+.checkbox:hover input ~ .check {
+  transform: scale(1.1);
 }
-.checkbox input:checked ~ .check{
+
+.checkbox input:checked ~ .check {
   background-color: #2678d9;
   border-color: transparent;
-
 }
+
 .check::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 5px;
   height: 12px;
   border: 1px solid #fff;
   border-width: 0 3px 3px 0;
-  left: 9px;
-  top: 4px;
+  left: 8px;
+  top: 2.5px;
   transform: rotate(45deg);
 }
-.checkbox input:focus ~ .check{
+
+.checkbox input:focus ~ .check {
   box-shadow: 0 0 0 1px var(--blue);
-
-
 }
-
 
 .btn {
   display: block;
