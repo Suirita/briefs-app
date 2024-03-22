@@ -25,7 +25,7 @@
                 </li>
 
                 <li>
-                    <a href="/briefs app/briefs-app/admin dashboard/index.php">
+                    <a href="././index.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                    <a href="/briefs app/briefs-app/admin dashboard/update.php">
+                    <a href="./update.php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>

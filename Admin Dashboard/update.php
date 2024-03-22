@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="/briefs app/briefs-app/admin dashboard/add.php">
+                    <a href="./add.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
@@ -52,7 +52,7 @@
                 </li>
 
                 <li>
-                    <a href="/briefs app/briefs-app/login/index.php">
+                    <a href="../login/index.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
