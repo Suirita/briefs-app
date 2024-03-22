@@ -212,12 +212,6 @@ body {
 
 /* =================== Inputs =================== */
 
-.adding_brief_title {
-  color: #1e88e1;
-  position: absolute;
-  left: 40px;
-}
-
 .form_container {
   display: flex;
   justify-content: center;
@@ -228,10 +222,20 @@ body {
   border-radius: 20px;
 }
 
+.adding_brief_title_container {
+  margin-bottom: 70px;
+}
+
+.adding_brief_title {
+  color: #1e88e1;
+  position: absolute;
+  left: 40px;
+}
+
 .input-div > div {
   position: relative;
   height: 45px;
-  margin: 25px 0;
+  margin: 30px 0;
 }
 
 .input-div > div > label {
@@ -244,33 +248,10 @@ body {
   transition: 0.3s;
 }
 
-.input-div:before,
-.input-div:after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  width: 0%;
-  height: 2px;
-  background-color: #1e88e1;
-  transition: 0.4s;
-}
-
-.input-div:before {
-  right: 50%;
-}
-
-.input-div:after {
-  left: 50%;
-}
-
-.input-div.focus:before,
-.input-div.focus:after {
-  width: 50%;
-}
-
 .input-div.focus > div > label {
-  top: -5px;
+  top: -10px;
   font-size: 15px;
+  color: #1e88e1;
 }
 
 .input-div > div > input {
@@ -281,11 +262,12 @@ body {
   height: 100%;
   border: none;
   outline: none;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
   background: none;
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
   color: #555;
-  font-family: "poppins", sans-serif;
 }
 
 .btn {

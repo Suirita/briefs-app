@@ -83,10 +83,12 @@
             <section>
                 <div class="form_container">
                     <form action="" method="get">
-                        <h1 class="adding_brief_title">Add a new brief</h1>
+                        <div class="adding_brief_title_container">
+                            <h1 class="adding_brief_title">Add a new brief</h1>
+                        </div>
                         <div class="input-div one">
                             <div class="div">
-                                <label for="brief_title">Brief Title</label><br>
+                                <label for="brief_title">Brief Title</label>
                                 <input type="text" class="input" id="brief_title" name="brief_title">
                             </div>
                         </div>
@@ -96,8 +98,8 @@
                         <input type="date" id="brief_end_date" name="brief_end_date">
                         <div class="input-div one">
                             <div class="div">
-                                <label for=" brief_URL">Brief URL</label><br>
-                                <input type="url" class="input" id="brief_URL" name="brief_URL"><br>
+                                <label for=" brief_URL">Brief URL</label>
+                                <input type="text" class="input" id="brief_URL" name="brief_URL">
                             </div>
                         </div>
                         <input type="submit" class="btn" value="Add Brief" name="submit">
