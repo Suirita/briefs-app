@@ -6,10 +6,10 @@ $user = 'root';
 $pass = '';
 
 try {
-    $DB = new PDO($dsn, $user, $pass);
-    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $DATABASE = new PDO($dsn, $user, $pass);
+    $DATABASE->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $DATA = $DB->prepare("SELECT * FROM trainers");
+    $DATA = $DATABASE->prepare("SELECT * FROM trainers");
     $DATA->execute();
 } catch (PDOException $e) {
     echo 'failed ' . $e->getMessage();
