@@ -6,10 +6,10 @@ $user = 'root';
 $pass = 'fahd26092004';
 
 try {
-    $DB = new PDO($dsn, $user, $pass);
-    $DB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $DATABASE = new PDO($dsn, $user, $pass);
+    $DATABASE->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $DATA = $DB->prepare("SELECT * FROM trainers");
+    $DATA = $DATABASE->prepare("SELECT * FROM trainers");
     $DATA->execute();
     while ($row = $DATA->fetch(PDO::FETCH_ASSOC)) {
         echo $row['FullName'] . '<br>';
