@@ -233,6 +233,10 @@ body {
   grid-gap: 20px;
 }
 
+.cards-container > a {
+   text-decoration: none;
+}
+
 .card {
   position: relative;
   background: var(--white);
@@ -240,6 +244,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+ 
 }
 
 .card > h3 {
@@ -258,6 +263,13 @@ body {
 .card:hover > h3,
 .card:hover > span {
   color: var(--white);
+}
+
+.edit-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 /* ====================== Responsive Design ========================== */

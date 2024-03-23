@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BriefSolicode | Admin Dashboard</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet" href="assets/css/edit.css">
+    <link rel="stylesheet" href="assets/css/add.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="./add.php">
+                    <a href="././add.php">
                         <span class="icon">
                             <ion-icon name="add-circle-outline"></ion-icon>
                         </span>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                    <a href="#main">
+                    <a href="./edit.php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
@@ -81,56 +81,53 @@
                 </div>
             </section>
             <section>
-                <div class="briefs-container ">
-                    <h1>Upcoming Briefs</h1>
-                    <div class="cards-container">
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
+                <div class="form_container">
+                    <form action="" method="get">
+                        <div class="adding_brief_title_container">
+                            <h1 class="adding_brief_title">Add a new brief</h1>
+                        </div>
+                        <div class="input-div one">
+                            <div class="div">
+                                <label for="brief_title">Brief Title</label>
+                                <input type="text" class="input" id="brief_title" name="brief_title">
                             </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
+                        </div>
+                        <div class="date-form">
+                            <div>
+                                <label for="brief_start_date" class="date-form-label">Start Date</label><br>
+                                <input type="date" id="brief_start_date" name="brief_start_date">
                             </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
+                            <div>
+                                <label for="brief_end_date" class="date-form-label">End Date</label><br>
+                                <input type="date" id="brief_end_date" name="brief_end_date">
                             </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
+                        </div>
+                        <div class="input-div one">
+                            <div class="div">
+                                <label for=" brief_URL">Brief URL</label>
+                                <input type="text" class="input" id="brief_URL" name="brief_URL">
                             </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
-                            </div>
-                        </a>
-
-                    </div>
+                        </div>
+                        <div>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                            <label class="checkbox">Bla Bla Bla
+                                <input type="checkbox">
+                                <span class="check"></span>
+                            </label>
+                        </div>
+                        <input type="submit" class="btn" value="Add Brief" name="submit">
+                    </form>
                 </div>
             </section>
         </main>
