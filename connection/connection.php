@@ -1,9 +1,9 @@
 <?php
 
 //connect to database
-$dsn = 'mysql:host=localhost;dbname=briefs-app';
+$dsn = 'mysql:host=localhost;dbname=briefs_app';
 $user = 'root';
-$pass = '';
+$pass = 'fahd26092004';
 
 try {
     $DB = new PDO($dsn, $user, $pass);
@@ -11,6 +11,9 @@ try {
 
     $DATA = $DB->prepare("SELECT * FROM trainers");
     $DATA->execute();
+    while ($row = $DATA->fetch(PDO::FETCH_ASSOC)) {
+        echo $row['FullName'] . '<br>';
+    }
 } catch (PDOException $e) {
     echo 'failed ' . $e->getMessage();
 }
