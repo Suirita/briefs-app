@@ -1,3 +1,12 @@
+<?php
+include('../connection/connection.php');
+
+$DATA = $DATABASE->prepare("SELECT  FROM trainers");
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$countTrainers = $result['CountTrainers'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
