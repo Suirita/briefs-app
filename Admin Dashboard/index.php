@@ -1,19 +1,20 @@
 <?php
 require_once '../connection/connection.php';
 
+
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
 $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countTrainers = $result['CountTrainers'];
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountLearners FROM learners");
-$DATA -> execute();
-$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countLearners = $result['CountLearners'];
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountBriefs FROM briefs");
-$DATA -> execute();
-$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countBriefs = $result['CountBriefs'];
 
 ?>
