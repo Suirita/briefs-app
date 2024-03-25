@@ -70,13 +70,14 @@ if (isset($_POST["submit"])) {
 					<div class="div">
 						<h5>Password</h5>
 						<input type="password" name="password" class="input">
-						<?php
-						if (isset($error)) {
-							echo "<p class='error'>" . $error . "</p>";
-						}
-						?>
+
 					</div>
 				</div>
+				<?php
+				if (isset($error)) {
+					echo "<p class='error'>" . $error . "</p>";
+				}
+				?>
 				<input type="submit" name="submit" class="btn" value="Login">
 			</form>
 		</div>
