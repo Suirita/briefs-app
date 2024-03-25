@@ -1,3 +1,22 @@
+<?php
+require_once '../connection/connection.php';
+
+$DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$countTrainers = $result['CountTrainers'];
+
+$DATA = $DATABASE->prepare("SELECT count(*) AS CountLearners FROM learners");
+$DATA -> execute();
+$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$countLearners = $result['CountLearners'];
+
+$DATA = $DATABASE->prepare("SELECT count(*) AS CountBriefs FROM briefs");
+$DATA -> execute();
+$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$countBriefs = $result['CountBriefs'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +106,7 @@
                 <div class="card">
                     <div>
                         <!-- PHP NUMBER -->
-                        <div class="numbers">80</div>
+                        <div class="numbers"><?php echo $countTrainers ?></div>
                         <div class="cardName">Trainers</div>
                     </div>
 
@@ -99,7 +118,7 @@
                 <div class="card">
                     <div>
                         <!-- PHP NUMBER -->
-                        <div class="numbers">1,504</div>
+                        <div class="numbers"><?php echo $countLearners ?></div>
                         <div class="cardName">Learners</div>
                     </div>
 
@@ -110,7 +129,7 @@
                 <div class="card">
                     <div>
                         <!-- PHP NUMBER -->
-                        <div class="numbers">284</div>
+                        <div class="numbers"><?php echo $countBriefs ?></div>
                         <div class="cardName">Briefs</div>
                     </div>
 
