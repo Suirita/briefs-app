@@ -1,6 +1,7 @@
 <?php
 require_once '../connection/connection.php';
 
+
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
 $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
