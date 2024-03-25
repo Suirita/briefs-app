@@ -147,7 +147,7 @@ $resultes = $DATA->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-          
+
             </section>
 
             <!-- ================ brief state List ================= -->
@@ -170,14 +170,20 @@ $resultes = $DATA->fetchAll(PDO::FETCH_ASSOC);
                         <!-- PHP LOOP -->
                         <tbody>
                             <?php foreach ($resultes as $result) : ?>
-                                <tr>
-                                    <td><?php echo $result['FullName'] ?></td>
-                                    <td><?php echo $result['Groupe'] ?></td>
-                                    <td><?php echo $result['Title'] ?></td>
-                                    <td><span class="status finished">finished</span></td>
-                                    <td></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $result['FullName'] ?></td>
+                                <td><?php echo $result['Groupe'] ?></td>
+                                <td><?php echo $result['Title'] ?></td>
+                                <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                <td>
+                                    <span class="status <?php echo strtolower($state); ?>">
+                                        <?php echo $result['State'] ?>
+                                    </span>
+                                </td>
+                                <td></td>
+                            </tr>
                             <?php endforeach; ?>
+
                         </tbody>
                     </table>
                 </div>

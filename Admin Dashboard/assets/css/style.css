@@ -324,7 +324,7 @@ body {
 .state .recentOrders table tr td:nth-child(3) {
   text-align: center;
 }
-.status.finished {
+.status.Finished {
   padding: 2px 4px;
   background: #8de02c;
   color: var(--white);
@@ -332,7 +332,7 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
-.status.to_do {
+.status.To_Do {
   padding: 2px 4px;
   background: #e9b10a;
   color: var(--white);
@@ -348,7 +348,7 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
-.status.inProgress {
+.status.In_Progress {
   padding: 2px 4px;
   background: #1795ce;
   color: var(--white);
