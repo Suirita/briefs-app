@@ -7,14 +7,21 @@ $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countTrainers = $result['CountTrainers'];
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountLearners FROM learners");
-$DATA -> execute();
-$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countLearners = $result['CountLearners'];
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountBriefs FROM briefs");
-$DATA -> execute();
-$result = $DATA -> fetch(PDO::FETCH_ASSOC);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countBriefs = $result['CountBriefs'];
+
+
+$DATA = $DATABASE->prepare("SELECT * FROM learners inner join learner_brief on learners.IdLearner = learner_brief.IdLearner inner join briefs on learner_brief.IdBrief = briefs.IdBrief");
+$DATA->execute();
+$resultes = $DATA->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 ?>
 <!DOCTYPE html>
@@ -168,61 +175,14 @@ $countBriefs = $result['CountBriefs'];
                         </thead>
                         <!-- PHP LOOP -->
                         <tbody>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Bla bla bla bla</td>
-                                <td><span class="status finished">finished</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status to_do">To Do</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status Not_Completed">Not Completed</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status finished">finished</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status to_do">To Do</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status Not_Completed">Not Completed</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                            <?php foreach ($resultes as $result) : ?>
+                                <tr>
+                                    <td><?php echo $result['FullName'] ?></td>
+                                    <td><?php echo $result['Groupe'] ?></td>
+                                    <td><?php echo $result['Title'] ?></td>
+                                    <td><span class="status finished">finished</span></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
