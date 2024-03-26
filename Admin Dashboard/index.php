@@ -162,7 +162,6 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                                 <td>URL</td>
                             </tr>
                         </thead>
-                        <!-- PHP LOOP -->
                         <tbody>
                             <?php foreach ($results as $result) : ?>
                                 <tr>

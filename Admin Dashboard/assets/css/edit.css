@@ -213,15 +213,15 @@ body {
 /* ===================== Cards ===================== */
 
 .cards-container {
-  margin-top: 20px;
+  margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
 }
 
 .briefs-container {
   background: var(--white);
-  padding: 20px;
+  padding: 30px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
   position: relative;
@@ -244,6 +244,7 @@ body {
   border-radius: 20px;
   cursor: pointer;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  min-height: 150px;
 }
 
 .card > h3 {
@@ -258,21 +259,16 @@ body {
   font-size: 1.5rem;
   position: absolute;
   bottom: 10px;
-  right: 40px;
+  right: 50px;
 }
 
 .edit-icon {
   font-size: 1.5rem;
   position: absolute;
   bottom: 10px;
-  right: 10px;
+  right: 2dvb;
 }
 
-/* .edit-icon-button {
-  position: absolute;
-  bottom: 10px;
-  right: 40px;
-} */
 
 .edit-icon:hover,
 .trash-icon:hover {
