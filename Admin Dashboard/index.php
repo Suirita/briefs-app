@@ -142,16 +142,7 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <div class="numbers"></div>
-                        <div class="cardName"></div>
-                    </div>
 
-                    <div class="iconBx">
-                        <ion-icon name="-outline"></ion-icon>
-                    </div>
-                </div>
             </section>
 
             <!-- ================ brief state List ================= -->
@@ -168,6 +159,7 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                                 <td>Groupe</td>
                                 <td>Brief</td>
                                 <td>Status</td>
+                                <td>URL</td>
                             </tr>
                         </thead>
                         <!-- PHP LOOP -->
@@ -177,9 +169,16 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                                     <td><?php echo $result['FullName'] ?></td>
                                     <td><?php echo $result['Groupe'] ?></td>
                                     <td><?php echo $result['Title'] ?></td>
-                                    <td><span class="status finished">finished</span></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                    <td>
+                                        <span class="status <?php echo $state; ?>">
+                                            <?php echo $result['State'] ?>
+                                        </span>
+                                    </td>
+                                    <td><?php echo $result['URL'] ?></td>
                                 </tr>
                             <?php endforeach; ?>
+
                         </tbody>
                     </table>
                 </div>
