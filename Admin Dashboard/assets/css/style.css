@@ -217,8 +217,8 @@ body {
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }
 
 .cardBox .card {
