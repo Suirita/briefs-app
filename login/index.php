@@ -9,11 +9,14 @@ if (isset($_POST["submit"])) {
 	if ($Email == "" || $Password == "") {
 		$error =  "Please enter all fields";
 	} else {
+		session_start();
 		$DATA = $DATABASE->prepare("SELECT * FROM trainers WHERE Email = :email AND Password = :password");
 		$DATA->bindParam(":email", $Email);
 		$DATA->bindParam(":password", $Password);
 		$DATA->execute();
 		if ($DATA->rowCount() > 0) {
+			$row = $DATA->fetch(PDO::FETCH_ASSOC);
+			$_SESSION["id"] = $row['IdTrainer'];
 			header("Location: ../Admin Dashboard/index.php");
 			exit();
 		} else {
@@ -22,6 +25,8 @@ if (isset($_POST["submit"])) {
 			$DATA->bindParam(":password", $Password);
 			$DATA->execute();
 			if ($DATA->rowCount() > 0) {
+				$row = $DATA->fetch(PDO::FETCH_ASSOC);
+				$_SESSION["id"] = $row['IdLearner'];
 				header("Location: ../Admin Dashboard/index.php");
 				exit();
 			} else {

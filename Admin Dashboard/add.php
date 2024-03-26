@@ -1,10 +1,45 @@
 <?php
+session_start();
 include('../connection/connection.php');
 
-$DATA = $DATABASE->prepare("SELECT  FROM trainers");
+$DATA = $DATABASE->prepare("SELECT * FROM skills");
 $DATA->execute();
-$result = $DATA->fetch(PDO::FETCH_ASSOC);
-$countTrainers = $result['CountTrainers'];
+$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_POST['submit'])) {
+    $Title = $_POST['brief_title'];
+    $Start_Date = $_POST['brief_start_date'];
+    $End_Date = $_POST['brief_end_date'];
+    $URL = $_POST['brief_URL'];
+
+    // Check if any checkbox is selected
+    if (isset($_POST['skills']) && is_array($_POST['skills'])) {
+        // Assign the selected skills directly to $Skill
+        $Skills = $_POST['skills'];
+    } else {
+        // Handle case where no checkboxes are selected
+        $Skills = [];
+    }
+
+    if (empty($Title) || empty($Start_Date) || empty($End_Date) || empty($URL) || $Skills==[]) {
+        $error = "All fields are required";
+    } else {
+        if($Start_Date > $End_Date){
+            $error = "the start date cannot be after the end date";
+        }else{
+            $DATA = "INSERT INTO briefs (Title, StartDate, EndDate, attachment, IdTrainer) VALUES (:brief_title, :brief_start_date, :brief_end_date, :brief_URL, :id)";
+            $DATA = $DATABASE->prepare($DATA);
+            $DATA->bindParam(':brief_title', $Title);
+            $DATA->bindParam(':brief_start_date', $Start_Date);
+            $DATA->bindParam(':brief_end_date', $End_Date);
+            $DATA->bindParam(':brief_URL', $URL);
+            $DATA->bindParam(':id', $_SESSION['id']);
+            $DATA->execute();
+
+            $error = "Brief added successfully!";
+        }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -91,7 +126,7 @@ $countTrainers = $result['CountTrainers'];
             </section>
             <section>
                 <div class="form_container">
-                    <form action="" method="get">
+                    <form method="post">
                         <div class="adding_brief_title_container">
                             <h1 class="adding_brief_title">Add a new brief</h1>
                         </div>
@@ -118,23 +153,22 @@ $countTrainers = $result['CountTrainers'];
                             </div>
                         </div>
                         <div>
-                            <label class="checkbox">Bla Bla Bla
-                                <input type="checkbox">
-                                <span class="check"></span>
-                            </label>
-                            <label class="checkbox">Bla Bla Bla
-                                <input type="checkbox">
-                                <span class="check"></span>
-                            </label>
-                            <label class="checkbox">Elaborer et mettre en œuvre des composants dans une application de gestion de contenu ou e-commerce
-                                <input type="checkbox">
-                                <span class="check"></span>
-                            </label>
-                            <label class="checkbox">Bla Bla Bla
-                                <input type="checkbox">
-                                <span class="check"></span>
-                            </label>
+                            <?php
+                            foreach ($result as $row) {
+                            ?>
+                                <label class="checkbox"><?php echo $row['titled'] ?>
+                                    <input type="checkbox" value="<?php echo $row['IdSkill'] ?>" name="skills[]">
+                                    <span class="check"></span>
+                                </label>
+                            <?php
+                            }
+                            ?>
                         </div>
+                        <?php
+                            if(isset($error)){
+                                echo $error;
+                            }
+                        ?>
                         <input type="submit" class="btn" value="Add Brief" name="submit">
                     </form>
                 </div>

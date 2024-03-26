@@ -1,7 +1,6 @@
 <?php
 require_once '../connection/connection.php';
 
-
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
 $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
@@ -17,13 +16,9 @@ $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countBriefs = $result['CountBriefs'];
 
-
 $DATA = $DATABASE->prepare("SELECT * FROM learners inner join learner_brief on learners.IdLearner = learner_brief.IdLearner inner join briefs on learner_brief.IdBrief = briefs.IdBrief");
 $DATA->execute();
-$resultes = $DATA->fetchAll(PDO::FETCH_ASSOC);
-
-
-
+$results = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -177,7 +172,7 @@ $resultes = $DATA->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <!-- PHP LOOP -->
                         <tbody>
-                            <?php foreach ($resultes as $result) : ?>
+                            <?php foreach ($results as $result) : ?>
                                 <tr>
                                     <td><?php echo $result['FullName'] ?></td>
                                     <td><?php echo $result['Groupe'] ?></td>

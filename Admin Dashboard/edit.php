@@ -1,3 +1,13 @@
+<?php
+
+include('../connection/connection.php');
+
+$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs");
+$DATA->execute();
+$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -84,52 +94,23 @@
                 <div class="briefs-container ">
                     <h1>Upcoming Briefs</h1>
                     <div class="cards-container">
-                        <a href="edit-card.php">
+                        <?php foreach ($result as $row) { ?>
                             <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
+                                <h3><?= $row['Title'] ?></h3>
+                                <span>Start Date:<?= $row['StartDate'] ?></span><br>
+                                <span>End Date: <?= $row['EndDate']?></span><br>
+                                <span><?= $row['attachment']?></span><br>
+                                <form id="edit-form" action="edit-card.php ?idBrief=<?= $row['idBrief'] ?>" method="get">
+                                    <button type="submit" class="edit-icon-button" hidden></button>
+                                    <div onclick="edit()"><ion-icon class="edit-icon" name="create-outline"></ion-icon></div>
+                                </form>
+                                </form>
+                                <form id="delete-form" method="post">
+                                    <button type="submit" class="trash-icon-button" hidden></button>
+                                    <div onclick="delete()"><ion-icon class="trash-icon" name="trash-outline"></ion-icon></div>
+                                </form>
                             </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
-                            </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
-                            </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
-                            </div>
-                        </a>
-                        <a href="edit-card.php">
-                            <div class="card">
-                                <h3>Title</h3>
-                                <span>Start Date: 00/00/0000</span><br>
-                                <span>End Date: 00/00/0000</span><br>
-                                <span>Brief URL</span><br>
-                                <ion-icon class="edit-icon" name="create-outline"></ion-icon>
-                            </div>
-                        </a>
-
+                        <?php } ?>
                     </div>
                 </div>
             </section>
