@@ -38,13 +38,3 @@ inputs.forEach((input) => {
   input.addEventListener("focus", addcl);
   input.addEventListener("blur", remcl);
 });
-
-function edit() {
-  console.log("edit");
-  document.getElementById("edit-form").submit();
-}
-
-// function delete() {
-//   console.log("delete");
-//   document.getElementById("delete-form").submit();
-// }

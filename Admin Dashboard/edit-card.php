@@ -1,3 +1,9 @@
+<?php
+if (isset($_GET['edit'])) {
+    echo "hay";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
