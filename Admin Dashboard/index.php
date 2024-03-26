@@ -100,7 +100,6 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </section>
 

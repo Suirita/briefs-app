@@ -269,7 +269,7 @@ body {
   position: relative;
   min-height: 500px;
   background: var(--white);
-  padding: 20px;
+  padding: 20px 10px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
@@ -325,7 +325,7 @@ body {
 }
 .status.Finished {
   padding: 2px 4px;
-  background: #8de02c;
+  background: #A8E363;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -333,7 +333,7 @@ body {
 }
 .status.To_Do {
   padding: 2px 4px;
-  background: #e9b10a;
+  background: #EBC85E;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -341,7 +341,7 @@ body {
 }
 .status.Not_Completed {
   padding: 2px 4px;
-  background: #f00;
+  background: #F97373;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -349,7 +349,7 @@ body {
 }
 .status.In_Progress {
   padding: 2px 4px;
-  background: #1795ce;
+  background: #51BBEA;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
