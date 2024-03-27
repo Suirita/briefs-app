@@ -158,17 +158,17 @@ if (isset($_POST['submit'])) {
                         <div class="input-div one">
                             <div class="div">
                                 <label for=" brief_URL">Brief URL</label>
-                                <input type="text" class="input" id="brief_URL" name="brief_URL">
+                                <input type="file" class="input" id="brief_URL" name="brief_URL">
                             </div>
                         </div>
                         <div>
                             <?php
                             foreach ($result as $row) {
                             ?>
-                                <label class="checkbox"><?php echo $row['titled'] ?>
-                                    <input type="checkbox" value="<?php echo $row['IdSkill'] ?>" name="skills[]">
-                                    <span class="check"></span>
-                                </label>
+                            <label class="checkbox"><?php echo $row['titled'] ?>
+                                <input type="checkbox" value="<?php echo $row['IdSkill'] ?>" name="skills[]">
+                                <span class="check"></span>
+                            </label>
                             <?php
                             }
                             ?>

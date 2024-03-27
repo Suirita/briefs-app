@@ -33,9 +33,9 @@
                     </a>
                 </li>
 
-               
 
-         
+
+
 
                 <li>
                     <a href="#">
@@ -144,45 +144,8 @@
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>Recent Customers</h2>
+                        <h2>Today's briefs</h2>
                     </div>
-
-                    <!-- <table>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer02.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>David <br> <span>Italy</span></h4>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="60px">
-                                <div class="imgBx"><img src="assets/imgs/customer01.jpg" alt=""></div>
-                            </td>
-                            <td>
-                                <h4>Amit <br> <span>India</span></h4>
-                            </td>
-                        </tr>
-
-                    </table> -->
                     <div class="custom-card">
                         <div class="card-header">
                             <h2>FARHA Event Project</h2>
@@ -192,19 +155,19 @@
                             <ul class="countdown-list">
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">02 </div> :
+                                        <div class="countdown-number">02 </div>
                                         <span class="countdown-unit">Days</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">05</div>:
+                                        <div class="countdown-number">05</div>
                                         <span class="countdown-unit">Hours</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">56</div>:<br>
+                                        <div class="countdown-number">56</div>
                                         <span class="countdown-unit">Min</span>
                                     </div>
                                 </li>
@@ -219,10 +182,15 @@
                         <div class="card-footer">
                             <div class="attachment-btn">
                                 <p>Attachment</p>
-                                <i class="fa-solid fa-arrow-down"></i>
+                                <ion-icon name="arrow-down-outline">
                             </div>
-                            <div class="delete-btn">
-                                <i class="fa-solid fa-trash"></i>
+                            <div class="">
+                               <select name="" id="status" class="delete-btn">status
+                                <option value="finished">Finished</option>
+                                <option value="todo">To Do</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="notcompleted">Not Completed</option>
+                               </select>
                             </div>
                         </div>
                     </div>
@@ -234,6 +202,33 @@
 
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('status').addEventListener('change', function () {
+                var selectElement = this;
+                var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+                var color;
+
+                switch (selectedOption) {
+                    case 'finished':
+                        color = 'green';
+                        break;
+                    case 'todo':
+                        color = 'orange';
+                        break;
+                    case 'inprogress':
+                        color = 'blue';
+                        break;
+                    case 'notcompleted':
+                        color = 'red';
+                        break;
+                    default:
+                        color = '';
+                }
+
+                selectElement.style.backgroundColor = color;
+            });
+
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

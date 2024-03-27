@@ -318,6 +318,7 @@ body {
 }
 .details .recentOrders table tr td {
   padding: 10px;
+  color: var(--black2);
 }
 .details .recentOrders table tr td:last-child {
   text-align: end;
@@ -364,7 +365,7 @@ body {
 .custom-card {
   border-radius: 1.5rem;
   padding: 1.25rem;
-  width: 75%;
+  width: 100%;
   background-color: var(--color-background);
 }
 
@@ -374,6 +375,7 @@ body {
 }
 
 .card-header h2 {
+  color: var(--blue);
   font-weight: 600;
   font-size: 1.4rem;
 }
@@ -386,35 +388,37 @@ body {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   font-weight: 600;
+  color: var(--black2);
 }
 
-.countdown-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 0.75rem;
-}
+ .countdown-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 
-.countdown-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.1rem;
-  font-size: 1rem;
-  color: #6b7280;
-}
+  .countdown-item {
+    align-items: center;
+    gap: 0.1rem;
+    font-size: 1rem;
+    color: #6b7280;
+  }
 
-.countdown-number {
-  background-color: #a5b4fc;
-  color: #fff;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-}
+  .countdown-number {
+    background-color: #ffffff;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    padding: 0.75rem;
+    border-radius: 50%;
+  }
 
-.countdown-unit {
-  font-weight: 100;
-}
+  .countdown-unit {
+    font-weight: 400;
+  }
 
 .card-footer {
   display: flex;
@@ -427,19 +431,29 @@ body {
 .attachment-btn {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  font-weight: 0.6rem;
+  gap: 1rem;
   background-color: #60a5fa;
   color: #fff;
   padding: 0.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
+
+}
+.attachment-btn p {
+  font-weight: 0.6rem;
 }
 
 .delete-btn {
-  background-color: #fc8181;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
+  display: flex;
+    align-items: center;
+    gap: 1rem;    margin-left: 9px;
+    background-color: #60a5fa;
+    color: #fff;
+    padding: 0.9rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
 }
 
 .recentCustomers {
