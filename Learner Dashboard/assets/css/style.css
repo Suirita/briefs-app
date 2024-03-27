@@ -461,7 +461,7 @@ body {
 .recentCustomers {
   position: relative;
   display: grid;
-  max-height:450px;
+  max-height:480px;
   padding: 20px;
   background: var(--white);
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -501,6 +501,22 @@ body {
   padding: 0.5rem 0.7rem;
   font-size: 1.2rem;
   color: #555;
+}
+.DoneButton {
+   display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  background-image: linear-gradient(to right, #2678d9, #1e88e1, #2678d9);
+  background-size: 200%;
+  font-size: 1.2rem;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 1rem 0;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 /* ====================== Responsive Design ========================== */

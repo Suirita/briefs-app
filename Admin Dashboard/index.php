@@ -92,12 +92,7 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
+
 
                 <div class="user">
                 </div>
@@ -163,18 +158,18 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                                <tr>
-                                    <td><?php echo $result['FullName'] ?></td>
-                                    <td><?php echo $result['Groupe'] ?></td>
-                                    <td><?php echo $result['Title'] ?></td>
-                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                    <td>
-                                        <span class="status <?php echo $state; ?>">
-                                            <?php echo $result['State'] ?>
-                                        </span>
-                                    </td>
-                                    <td><?php echo $result['URL'] ?></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $result['FullName'] ?></td>
+                                <td><?php echo $result['Groupe'] ?></td>
+                                <td><?php echo $result['Title'] ?></td>
+                                <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                <td>
+                                    <span class="status <?php echo $state; ?>">
+                                        <?php echo $result['State'] ?>
+                                    </span>
+                                </td>
+                                <td><a href=""><?php echo $result['URL'] ?></a></td>
+                            </tr>
                             <?php endforeach; ?>
 
                         </tbody>
