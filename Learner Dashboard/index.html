@@ -16,11 +16,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="#main">
                         <span class="icon">
-                            <ion-icon name="-apple"></ion-icon>
+                            <ion-icon name="code-slash-outline"></ion-icon>
                         </span>
-                        <span class="title">Brand Name</span>
+                        <span class="title">BriefSolicode</span>
                     </a>
                 </li>
 
@@ -137,6 +137,51 @@
                                 <td>00/00/2000</td>
                                 <td><span class="status delivered">Finished</span></td>
                             </tr>
+                            <tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr>
+                            <tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr>
+                            <tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr>
+                            <tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr>
+                            <tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr><tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr><tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr><tr>
+                                <td>BLA BLA BLA</td>
+                                <td>00/00/2000</td>
+                                <td>00/00/2000</td>
+                                <td><span class="status delivered">Finished</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -185,12 +230,18 @@
                                 <ion-icon name="arrow-down-outline">
                             </div>
                             <div class="">
-                               <select name="" id="status" class="delete-btn">status
-                                <option value="finished">Finished</option>
-                                <option value="todo">To Do</option>
-                                <option value="inprogress">In Progress</option>
-                                <option value="notcompleted">Not Completed</option>
-                               </select>
+                                <select name="" id="status" class="delete-btn">status
+                                    <option value="finished">Finished</option>
+                                    <option value="todo">To Do</option>
+                                    <option value="inprogress">In Progress</option>
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="input-div one" id="urlInputContainer">
+                            <div class="div">
+                                <label for="brief_title"></label>
+                                <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
                             </div>
                         </div>
                     </div>
@@ -204,29 +255,35 @@
     <script src="assets/js/main.js"></script>
     <script>
         document.getElementById('status').addEventListener('change', function () {
-                var selectElement = this;
-                var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-                var color;
+            var selectElement = this;
+            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+            var color;
 
-                switch (selectedOption) {
-                    case 'finished':
-                        color = 'green';
-                        break;
-                    case 'todo':
-                        color = 'orange';
-                        break;
-                    case 'inprogress':
-                        color = 'blue';
-                        break;
-                    case 'notcompleted':
-                        color = 'red';
-                        break;
-                    default:
-                        color = '';
-                }
+            switch (selectedOption) {
+                case 'finished':
+                    color = 'green';
+                    break;
+                case 'todo':
+                    color = 'orange';
+                    break;
+                case 'inprogress':
+                    color = 'blue';
+                    break;
+                case 'notcompleted':
+                    color = 'red';
+                    break;
+                default:
+                    color = '';
+            }
 
-                selectElement.style.backgroundColor = color;
-            });
+            selectElement.style.backgroundColor = color;
+            if (selectedOption == 'finished') {
+                document.getElementById('urlInputContainer').style.display = 'block'
+            } else {
+                document.getElementById('urlInputContainer').style.display = 'none'
+            }
+
+        });
 
     </script>
 

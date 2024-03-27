@@ -273,16 +273,18 @@ body {
 .details .recentOrders {
   position: relative;
   display: grid;
-  height: 200px;  background: var(--white);
+    min-height: 9px;
+  background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
 
 .details .cardHeader {
-  /* display: flex;
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start; */
+  align-items: flex-start;
+  min-height: 9px;
 }
 .cardHeader h2 {
   font-weight: 600;
@@ -459,45 +461,46 @@ body {
 .recentCustomers {
   position: relative;
   display: grid;
-  min-height: 100px;
+  max-height:450px;
   padding: 20px;
   background: var(--white);
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
 }
-.recentCustomers .imgBx {
+
+.input-div>div {
   position: relative;
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  overflow: hidden;
+  height: 45px;
+  margin: 30px 0 20px 0;
 }
-.recentCustomers .imgBx img {
+
+.input-div>div>label {
   position: absolute;
-  top: 0;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+
+
+.input-div>div>input {
+  position: absolute;
   left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-.recentCustomers table tr td {
-  padding: 12px 10px;
-}
-.recentCustomers table tr td h4 {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2rem;
-}
-.recentCustomers table tr td h4 span {
-  font-size: 14px;
-  color: var(--black2);
-}
-.recentCustomers table tr:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-.recentCustomers table tr:hover td h4 span {
-  color: var(--white);
+  border: none;
+  outline: none;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 15px;
+  background: none;
+  border: 1px solid green;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 /* ====================== Responsive Design ========================== */
