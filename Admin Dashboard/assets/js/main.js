@@ -38,3 +38,8 @@ inputs.forEach((input) => {
   input.addEventListener("focus", addcl);
   input.addEventListener("blur", remcl);
 });
+
+window.onload = function () {
+  document.getElementById("brief_title").focus();
+  document.getElementById("brief_URL").select();
+};

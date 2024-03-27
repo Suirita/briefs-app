@@ -12,7 +12,6 @@ if (isset($_POST['trash'])) {
     $DATA = $DATABASE->prepare("DELETE FROM briefs WHERE idBrief = :idBrief");
     $DATA->bindParam(':idBrief', $idBrief);
     $DATA->execute();
-
 }
 
 $CURDATE = date('Y-m-d');
@@ -116,9 +115,9 @@ $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
                                 <span>Start Date:<?= $row['StartDate'] ?></span><br>
                                 <span>End Date: <?= $row['EndDate'] ?></span><br>
                                 <span><?= $row['attachment'] ?></span><br>
-                                <form id="edit-form" action="edit-card.php ?idBrief=<?= $row['idBrief'] ?>" method="get">
+                                <form action="edit-card.php" method="post">
+                                    <input type="text" name="idBrief" value="<?= $row['idBrief'] ?>" hidden>
                                     <button type="submit" name="edit" class="edit-icon-button"><ion-icon class="edit-icon" name="create-outline"></ion-icon></button>
-
                                 </form>
                                 </form>
                                 <form method="post">
