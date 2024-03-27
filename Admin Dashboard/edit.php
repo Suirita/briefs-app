@@ -2,7 +2,22 @@
 
 include('../connection/connection.php');
 
-$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs");
+if (isset($_POST['trash'])) {
+    $idBrief = $_POST['idBrief'];
+
+    $DATA = $DATABASE->prepare("DELETE FROM brief_skills WHERE idBrief = :idBrief");
+    $DATA->bindParam(':idBrief', $idBrief);
+    $DATA->execute();
+
+    $DATA = $DATABASE->prepare("DELETE FROM briefs WHERE idBrief = :idBrief");
+    $DATA->bindParam(':idBrief', $idBrief);
+    $DATA->execute();
+}
+
+$CURDATE = date('Y-m-d');
+
+$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate >= :CURDATE ORDER BY StartDate ASC");
+$DATA->bindParam(':CURDATE', $CURDATE);
 $DATA->execute();
 $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
@@ -98,16 +113,16 @@ $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
                             <div class="card">
                                 <h3><?= $row['Title'] ?></h3>
                                 <span>Start Date:<?= $row['StartDate'] ?></span><br>
-                                <span>End Date: <?= $row['EndDate']?></span><br>
-                                <span><?= $row['attachment']?></span><br>
-                                <form id="edit-form" action="edit-card.php ?idBrief=<?= $row['idBrief'] ?>" method="get">
-                                    <button type="submit" class="edit-icon-button" hidden></button>
-                                    <div onclick="edit()"><ion-icon class="edit-icon" name="create-outline"></ion-icon></div>
+                                <span>End Date: <?= $row['EndDate'] ?></span><br>
+                                <span><?= $row['attachment'] ?></span><br>
+                                <form action="edit-card.php" method="post">
+                                    <input type="text" name="idBrief" value="<?= $row['idBrief'] ?>" hidden>
+                                    <button type="submit" name="edit" class="edit-icon-button"><ion-icon class="edit-icon" name="create-outline"></ion-icon></button>
                                 </form>
                                 </form>
-                                <form id="delete-form" method="post">
-                                    <button type="submit" class="trash-icon-button" hidden></button>
-                                    <div onclick="delete()"><ion-icon class="trash-icon" name="trash-outline"></ion-icon></div>
+                                <form method="post">
+                                    <input type="text" name="idBrief" value="<?= $row['idBrief'] ?>" hidden>
+                                    <button type="submit" name="trash" class="trash-icon-button"><ion-icon class="trash-icon" name="trash-outline"></ion-icon></button>
                                 </form>
                             </div>
                         <?php } ?>

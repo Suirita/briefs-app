@@ -39,12 +39,7 @@ inputs.forEach((input) => {
   input.addEventListener("blur", remcl);
 });
 
-function edit() {
-  console.log("edit");
-  document.getElementById("edit-form").submit();
-}
-
-// function delete() {
-//   console.log("delete");
-//   document.getElementById("delete-form").submit();
-// }
+window.onload = function () {
+  document.getElementById("brief_title").focus();
+  document.getElementById("brief_URL").select();
+};

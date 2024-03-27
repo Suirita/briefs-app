@@ -14,19 +14,18 @@ if (isset($_POST['submit'])) {
 
     // Check if any checkbox is selected
     if (isset($_POST['skills']) && is_array($_POST['skills'])) {
-        // Assign the selected skills directly to $Skill
         $Skills = $_POST['skills'];
     } else {
         // Handle case where no checkboxes are selected
         $Skills = [];
     }
 
-    if (empty($Title) || empty($Start_Date) || empty($End_Date) || empty($URL) || $Skills==[]) {
+    if (empty($Title) || empty($Start_Date) || empty($End_Date) || empty($URL) || $Skills == []) {
         $error = "All fields are required";
     } else {
-        if($Start_Date > $End_Date){
+        if ($Start_Date > $End_Date) {
             $error = "the start date cannot be after the end date";
-        }else{
+        } else {
             $DATA = "INSERT INTO briefs (Title, StartDate, EndDate, attachment, IdTrainer) VALUES (:brief_title, :brief_start_date, :brief_end_date, :brief_URL, :id)";
             $DATA = $DATABASE->prepare($DATA);
             $DATA->bindParam(':brief_title', $Title);
@@ -35,6 +34,16 @@ if (isset($_POST['submit'])) {
             $DATA->bindParam(':brief_URL', $URL);
             $DATA->bindParam(':id', $_SESSION['id']);
             $DATA->execute();
+
+            $lastInsertId = $DATABASE->lastInsertId();
+
+            $DATA = "INSERT INTO brief_skills (IdBrief, IdSkill) VALUES (:IdBrief, :IdSkill)";
+            $DATA = $DATABASE->prepare($DATA);
+            foreach ($Skills as $skill) {
+                $DATA->bindParam(':IdBrief', $lastInsertId);
+                $DATA->bindParam(':IdSkill', $skill);
+                $DATA->execute();
+            }
 
             $error = "Brief added successfully!";
         }
@@ -165,9 +174,9 @@ if (isset($_POST['submit'])) {
                             ?>
                         </div>
                         <?php
-                            if(isset($error)){
-                                echo $error;
-                            }
+                        if (isset($error)) {
+                            echo $error;
+                        }
                         ?>
                         <input type="submit" class="btn" value="Add Brief" name="submit">
                     </form>
