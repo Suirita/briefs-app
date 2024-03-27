@@ -2,13 +2,6 @@
 
 include('../connection/connection.php');
 
-$CURDATE = date('Y-m-d');
-
-$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate >= :CURDATE ORDER BY StartDate ASC");
-$DATA->bindParam(':CURDATE', $CURDATE);
-$DATA->execute();
-$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
-
 if (isset($_POST['trash'])) {
     $idBrief = $_POST['idBrief'];
 
@@ -20,9 +13,14 @@ if (isset($_POST['trash'])) {
     $DATA->bindParam(':idBrief', $idBrief);
     $DATA->execute();
 
-    header("Refresh: 0.1s"); // Refresh the page after 5 seconds
-
 }
+
+$CURDATE = date('Y-m-d');
+
+$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate >= :CURDATE ORDER BY StartDate ASC");
+$DATA->bindParam(':CURDATE', $CURDATE);
+$DATA->execute();
+$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
