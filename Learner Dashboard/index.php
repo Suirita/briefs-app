@@ -1,3 +1,47 @@
+<?php
+session_start();
+require_once '../connection/connection.php';
+
+if (isset($_SESSION['IdLearner'])) {
+    $IdLearner = $_SESSION['IdLearner'];
+
+    $DATA = $DATABASE->prepare("SELECT 
+                                    SUM(State = 'Finished') AS Finished,
+                                    SUM(State = 'To Do') AS ToDo,
+                                    SUM(State = 'In Progress') AS InProgress,
+                                    SUM(State = 'Not Completed') AS NotCompleted
+                                    FROM learner_brief 
+                                    WHERE IdLearner = :IdLearner");
+    $DATA->bindParam(':IdLearner', $IdLearner);
+    $DATA->execute();
+    $counts = $DATA->fetch(PDO::FETCH_ASSOC);
+
+    $result = $DATABASE->prepare("SELECT * FROM learners 
+                                            inner join learner_brief on learners.IdLearner = learner_brief.IdLearner 
+                                            inner join briefs on learner_brief.IdBrief = briefs.IdBrief 
+                                            WHERE learners.IdLearner = :IdLearner ");
+    $result->bindParam(':IdLearner', $IdLearner);
+    $result->execute();
+    $results = $result->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $currentDate = date("Y-m-d");
+    $result = $DATABASE->prepare("SELECT * FROM briefs  where StartDate >= :currentDate ORDER BY StartDate ASC"); 
+    $result -> bindParam(':currentDate', $currentDate);
+    $result->execute();
+    $recent_brief = $result->fetch(PDO::FETCH_ASSOC);
+} else {
+    echo "IdLearner session variable not set.";
+}
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,8 +114,9 @@
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card" style="background-color: #A8E363;">
+
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers"><?php echo $counts['Finished']  ?></div>
                         <div class="cardName">Finished</div>
                     </div>
 
@@ -82,7 +127,7 @@
 
                 <div class="card" style="background-color: #EBC85E;">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers"><?php echo $counts['ToDo']  ?></div>
                         <div class="cardName">To Do</div>
                     </div>
 
@@ -93,7 +138,7 @@
 
                 <div class="card" style="background-color: #51BBEA;">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers"><?php echo $counts['InProgress']  ?></div>
                         <div class="cardName">In Progress</div>
                     </div>
 
@@ -104,7 +149,7 @@
 
                 <div class="card" style="background-color: #F97373;">
                     <div>
-                        <div class="numbers">80</div>
+                        <div class="numbers"><?php echo $counts['NotCompleted']  ?></div>
                         <div class="cardName">Passed</div>
                     </div>
 
@@ -131,60 +176,16 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
-                            <tr>
-                                <td>BLA BLA BLA</td>
-                                <td>00/00/2000</td>
-                                <td>00/00/2000</td>
-                                <td><span class="status delivered">Finished</span></td>
-                            </tr>
+                            <?php foreach ($results as $result) : ?>
+                                <tr>
+                                    <td><?php echo $result['FullName'] ?></td>
+                                    <td><?php echo $result['StartDate'] ?></td>
+                                    <td><?php echo $result['EndDate'] ?></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                    <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
+                                </tr>
+
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
@@ -196,7 +197,7 @@
                     </div>
                     <div class="custom-card">
                         <div class="card-header">
-                            <h2>FARHA Event Project</h2>
+                            <h2><?php echo $recent_brief['Title'] ?></h2>
                         </div>
                         <div class="countdown">
                             <p class="countdown-label">It will end in :</p>
@@ -229,14 +230,16 @@
                         </div>
                         <div class="card-footer">
                             <div class="attachment-btn">
-                                <p>Attachment</p>
+                                <p><?php echo ['EndDate'] ?></p>
                                 <ion-icon name="arrow-down-outline">
                             </div>
                             <div class="">
                                 <select name="" id="status" class="delete-btn">status
-                                    <option value="finished">Finished</option>
+                                    <option value=""></option>
+
                                     <option value="todo">To Do</option>
                                     <option value="inprogress">In Progress</option>
+                                    <option value="finished">Finished</option>
                                 </select>
                             </div>
 
@@ -244,12 +247,12 @@
                         <div class="input-div one" id="urlInputContainer">
                             <div class="div">
                                 <label for="brief_title"></label>
-                                <input type="text" class="input" id="brief_title" name="brief_title"
-                                    placeholder="Enter the URL">
+                                <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
                             </div>
-                                                    <button class="DoneButton">DONE</button>
+                           
 
                         </div>
+                         <button class="DoneButton">DONE</button>
 
                     </div>
 
@@ -261,7 +264,7 @@
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
     <script>
-        document.getElementById('status').addEventListener('change', function () {
+        document.getElementById('status').addEventListener('change', function() {
             var selectElement = this;
             var selectedOption = selectElement.options[selectElement.selectedIndex].value;
             var color;
@@ -284,6 +287,7 @@
             }
 
             selectElement.style.backgroundColor = color;
+
             if (selectedOption == 'finished') {
                 document.getElementById('urlInputContainer').style.display = 'block'
             } else {
@@ -291,7 +295,6 @@
             }
 
         });
-
     </script>
 
     <!-- ====== ionicons ======= -->
