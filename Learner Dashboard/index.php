@@ -23,6 +23,18 @@ if (isset($_SESSION['IdLearner'])) {
     $result->bindParam(':IdLearner', $IdLearner);
     $result->execute();
     $results = $result->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $result = $DATABASE->prepare("SELECT * FROM learners 
+                                  INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
+                                  INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief 
+                                  WHERE learners.IdLearner = :IdLearner 
+                                  ORDER BY briefs.StartDate DESC, briefs.EndDate DESC
+                                  LIMIT 1"); // Limit to retrieve only the recent brief
+    $result->bindParam(':IdLearner', $IdLearner);
+    $result->execute();
+    $recent_brief = $result->fetch(PDO::FETCH_ASSOC);
 } else {
     echo "IdLearner session variable not set.";
 }
@@ -173,7 +185,8 @@ if (isset($_SESSION['IdLearner'])) {
                                     <td><?php echo $result['FullName'] ?></td>
                                     <td><?php echo $result['StartDate'] ?></td>
                                     <td><?php echo $result['EndDate'] ?></td>
-                                    <td><span class="status <?php echo $result['State'] ?>"><?php echo $result['State'] ?></span></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                    <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
                                 </tr>
 
                             <?php endforeach; ?>
@@ -188,7 +201,7 @@ if (isset($_SESSION['IdLearner'])) {
                     </div>
                     <div class="custom-card">
                         <div class="card-header">
-                            <h2>FARHA Event Project</h2>
+                            <h2><?php echo $recent_brief['Title'] ?></h2>
                         </div>
                         <div class="countdown">
                             <p class="countdown-label">It will end in :</p>
@@ -240,9 +253,10 @@ if (isset($_SESSION['IdLearner'])) {
                                 <label for="brief_title"></label>
                                 <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
                             </div>
-                            <button class="DoneButton">DONE</button>
+                           
 
                         </div>
+                         <button class="DoneButton">DONE</button>
 
                     </div>
 
