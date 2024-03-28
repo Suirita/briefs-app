@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
 		$DATA->execute();
 		if ($DATA->rowCount() > 0) {
 			$row = $DATA->fetch(PDO::FETCH_ASSOC);
-			$_SESSION["id"] = $row['IdTrainer'];
+			$_SESSION["IdTrainer"] = $row['IdTrainer'];
 			header("Location: ../Admin Dashboard/index.php");
 			exit();
 		} else {
@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 			$DATA->execute();
 			if ($DATA->rowCount() > 0) {
 				$row = $DATA->fetch(PDO::FETCH_ASSOC);
-				$_SESSION["id"] = $row['IdLearner'];
+				$_SESSION["IdLearner"] = $row['IdLearner'];
 				header("Location: ../Learner Dashboard/index.php");
 				exit();
 			} else {

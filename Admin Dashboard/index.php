@@ -1,5 +1,10 @@
 <?php
 require_once '../connection/connection.php';
+session_start();
+
+$IdTrainer = $_SESSION['IdTrainer'];
+
+$DATA = "select FullName from  ";
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
 $DATA->execute();
