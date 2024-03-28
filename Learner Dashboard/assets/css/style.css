@@ -272,8 +272,8 @@ body {
 
 .details .recentOrders {
   position: relative;
-  display: grid;
-    min-height: 9px;
+  /* display: grid; */
+ min-height: 10px;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -284,7 +284,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  min-height: 9px;
+ 
 }
 .cardHeader h2 {
   font-weight: 600;
@@ -460,7 +460,7 @@ body {
 
 .recentCustomers {
   position: relative;
-  display: grid;
+  /* display: grid; */
   max-height:480px;
   padding: 20px;
   background: var(--white);
