@@ -10,8 +10,8 @@ if (isset($_SESSION['IdLearner'])) {
                                     SUM(State = 'To Do') AS ToDo,
                                     SUM(State = 'In Progress') AS InProgress,
                                     SUM(State = 'Not Completed') AS NotCompleted
-                                 FROM learner_brief 
-                                 WHERE IdLearner = :IdLearner");
+                                    FROM learner_brief 
+                                    WHERE IdLearner = :IdLearner");
     $DATA->bindParam(':IdLearner', $IdLearner);
     $DATA->execute();
     $counts = $DATA->fetch(PDO::FETCH_ASSOC);
@@ -26,13 +26,9 @@ if (isset($_SESSION['IdLearner'])) {
 
 
 
-    $result = $DATABASE->prepare("SELECT * FROM learners 
-                                  INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
-                                  INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief 
-                                  WHERE learners.IdLearner = :IdLearner 
-                                  ORDER BY briefs.StartDate DESC, briefs.EndDate DESC
-                                  LIMIT 1"); // Limit to retrieve only the recent brief
-    $result->bindParam(':IdLearner', $IdLearner);
+    $currentDate = date("Y-m-d");
+    $result = $DATABASE->prepare("SELECT * FROM briefs  where StartDate >= :currentDate ORDER BY StartDate ASC"); 
+    $result -> bindParam(':currentDate', $currentDate);
     $result->execute();
     $recent_brief = $result->fetch(PDO::FETCH_ASSOC);
 } else {
@@ -234,7 +230,7 @@ if (isset($_SESSION['IdLearner'])) {
                         </div>
                         <div class="card-footer">
                             <div class="attachment-btn">
-                                <p>Attachment</p>
+                                <p><?php echo ['EndDate'] ?></p>
                                 <ion-icon name="arrow-down-outline">
                             </div>
                             <div class="">
