@@ -27,7 +27,7 @@ if (isset($_POST["submit"])) {
 			if ($DATA->rowCount() > 0) {
 				$row = $DATA->fetch(PDO::FETCH_ASSOC);
 				$_SESSION["id"] = $row['IdLearner'];
-				header("Location: ../Admin Dashboard/index.php");
+				header("Location: ../Learner Dashboard/index.php");
 				exit();
 			} else {
 				$error = "Invalid email or password";
