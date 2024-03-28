@@ -2,9 +2,12 @@
 require_once '../connection/connection.php';
 session_start();
 
-$IdTrainer = $_SESSION['IdTrainer'];
-
-$DATA = "select FullName from  ";
+$DATA = "select FullName from trainers where IdTrainer = :IdTrainer";
+$DATA = $DATABASE->prepare($DATA);
+$DATA->bindParam(":IdTrainer", $_SESSION['IdTrainer']);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$FullName = $result['FullName'];
 
 $DATA = $DATABASE->prepare("SELECT count(*) AS CountTrainers FROM trainers");
 $DATA->execute();
@@ -96,10 +99,8 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
-
-
                 <div class="user">
+                    <?=$FullName?>
                 </div>
             </section>
 
@@ -163,18 +164,18 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                         </thead>
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                            <tr>
-                                <td><?php echo $result['FullName'] ?></td>
-                                <td><?php echo $result['Groupe'] ?></td>
-                                <td><?php echo $result['Title'] ?></td>
-                                <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                <td>
-                                    <span class="status <?php echo $state; ?>">
-                                        <?php echo $result['State'] ?>
-                                    </span>
-                                </td>
-                                <td><a href=""><?php echo $result['URL'] ?></a></td>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $result['FullName'] ?></td>
+                                    <td><?php echo $result['Groupe'] ?></td>
+                                    <td><?php echo $result['Title'] ?></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                    <td>
+                                        <span class="status <?php echo $state; ?>">
+                                            <?php echo $result['State'] ?>
+                                        </span>
+                                    </td>
+                                    <td><a href=""><?php echo $result['URL'] ?></a></td>
+                                </tr>
                             <?php endforeach; ?>
 
                         </tbody>

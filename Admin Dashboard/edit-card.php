@@ -1,6 +1,13 @@
 <?php
-include('../connection/connection.php');
 session_start();
+include('../connection/connection.php');
+
+$DATA = "SELECT FullName FROM trainers where IdTrainer = :IdTrainer";
+$DATA = $DATABASE->prepare($DATA);
+$DATA->bindParam(':IdTrainer', $_SESSION['IdTrainer']);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$FullName = $result['FullName'];
 
 if (isset($_POST['edit'])) {
     $idBrief = $_POST['idBrief'];
@@ -146,7 +153,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
+                    <?= $FullName ?>
                 </div>
             </section>
             <section>

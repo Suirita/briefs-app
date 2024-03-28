@@ -2,6 +2,13 @@
 session_start();
 include('../connection/connection.php');
 
+$DATA = "SELECT FullName FROM trainers where IdTrainer = :IdTrainer";
+$DATA = $DATABASE->prepare($DATA);
+$DATA->bindParam(':IdTrainer', $_SESSION['IdTrainer']);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$FullName = $result['FullName'];
+
 $DATA = $DATABASE->prepare("SELECT * FROM skills");
 $DATA->execute();
 $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
@@ -123,7 +130,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
+                    <?= $FullName ?>
                 </div>
             </section>
             <section>
@@ -158,10 +165,10 @@ if (isset($_POST['submit'])) {
                             <?php
                             foreach ($result as $row) {
                             ?>
-                            <label class="checkbox"><?php echo $row['titled'] ?>
-                                <input type="checkbox" value="<?php echo $row['IdSkill'] ?>" name="skills[]">
-                                <span class="check"></span>
-                            </label>
+                                <label class="checkbox"><?php echo $row['titled'] ?>
+                                    <input type="checkbox" value="<?php echo $row['IdSkill'] ?>" name="skills[]">
+                                    <span class="check"></span>
+                                </label>
                             <?php
                             }
                             ?>

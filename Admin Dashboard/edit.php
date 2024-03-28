@@ -1,6 +1,13 @@
 <?php
-
+session_start();
 include('../connection/connection.php');
+
+$DATA = "SELECT FullName FROM trainers where IdTrainer = :IdTrainer";
+$DATA = $DATABASE->prepare($DATA);
+$DATA->bindParam(':IdTrainer', $_SESSION['IdTrainer']);
+$DATA->execute();
+$result = $DATA->fetch(PDO::FETCH_ASSOC);
+$FullName = $result['FullName'];
 
 if (isset($_POST['trash'])) {
     $idBrief = $_POST['idBrief'];
@@ -21,6 +28,14 @@ $DATA->bindParam(':CURDATE', $CURDATE);
 $DATA->execute();
 $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
+if (isset($_POST['search'])) {
+    $search_input = '%' . $_POST['search_input'] . '%';
+    $DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE startDate >= :CURDATE AND Title LIKE :search_input ORDER BY StartDate ASC");
+    $DATA->bindParam(':search_input', $search_input);
+    $DATA->bindParam(':CURDATE', $CURDATE);
+    $DATA->execute();
+    $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 <!DOCTYPE html>
@@ -96,13 +111,15 @@ $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="search">
                     <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
+                        <form method="post">
+                            <input type="text" name="search_input" placeholder="Search here">
+                            <button type="submit" name="search"><ion-icon name="search-outline"></ion-icon></button>
+                        </form>
                     </label>
                 </div>
 
                 <div class="user">
-                    <img src="assets/imgs/customer01.jpg" alt="">
+                    <?= $FullName ?>
                 </div>
             </section>
             <section>
