@@ -1,3 +1,24 @@
+<?php 
+session_start();
+require_once '../connection/connection.php';
+
+$DATA = $DATABASE -> prepare("SELECT * FROM learners inner join learner_brief on learners.IdLearner = learner_brief.IdLearner inner join briefs on learner_brief.IdBrief = briefs.IdBrief ");
+$DATA -> execute();
+$results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+foreach ($results as $row){
+    echo $row['IdLearner'];
+}
+
+
+
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -284,6 +305,7 @@
             }
 
             selectElement.style.backgroundColor = color;
+            
             if (selectedOption == 'finished') {
                 document.getElementById('urlInputContainer').style.display = 'block'
             } else {
