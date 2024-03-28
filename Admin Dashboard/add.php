@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
             $DATA->bindParam(':brief_start_date', $Start_Date);
             $DATA->bindParam(':brief_end_date', $End_Date);
             $DATA->bindParam(':brief_URL', $URL);
-            $DATA->bindParam(':id', $_SESSION['id']);
+            $DATA->bindParam(':id', $_SESSION['IdTrainer']);
             $DATA->execute();
 
             $lastInsertId = $DATABASE->lastInsertId();
