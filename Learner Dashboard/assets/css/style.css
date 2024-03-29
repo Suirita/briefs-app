@@ -443,6 +443,14 @@ body {
   cursor: pointer;
 
 }
+.attachment-btn a {
+text-decoration: none ;
+color: var(--white);
+display: flex;
+  align-items: center;
+  font-weight: 0.6rem;
+  gap: 1rem;
+}
 .attachment-btn p {
   font-weight: 0.6rem;
 }
@@ -462,7 +470,7 @@ body {
 .recentCustomers {
   position: relative;
   /* display: grid; */
-  max-height:480px;
+  max-height: 500px;
   padding: 20px;
   background: var(--white);
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
