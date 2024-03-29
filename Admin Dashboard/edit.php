@@ -23,14 +23,14 @@ if (isset($_POST['trash'])) {
 
 $CURDATE = date('Y-m-d');
 
-$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate >= :CURDATE ORDER BY StartDate ASC");
+$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate > :CURDATE ORDER BY StartDate ASC");
 $DATA->bindParam(':CURDATE', $CURDATE);
 $DATA->execute();
 $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['search'])) {
     $search_input = '%' . $_POST['search_input'] . '%';
-    $DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE startDate >= :CURDATE AND Title LIKE :search_input ORDER BY StartDate ASC");
+    $DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE startDate > :CURDATE AND Title LIKE :search_input ORDER BY StartDate ASC");
     $DATA->bindParam(':search_input', $search_input);
     $DATA->bindParam(':CURDATE', $CURDATE);
     $DATA->execute();

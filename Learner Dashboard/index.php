@@ -27,8 +27,8 @@ if (isset($_SESSION['IdLearner'])) {
 
 
     $currentDate = date("Y-m-d");
-    $result = $DATABASE->prepare("SELECT * FROM briefs  where StartDate >= :currentDate ORDER BY StartDate ASC"); 
-    $result -> bindParam(':currentDate', $currentDate);
+    $result = $DATABASE->prepare("SELECT * FROM briefs  where StartDate >= :currentDate ORDER BY StartDate ASC");
+    $result->bindParam(':currentDate', $currentDate);
     $result->execute();
     $recent_brief = $result->fetch(PDO::FETCH_ASSOC);
 } else {
@@ -55,8 +55,8 @@ if (isset($_SESSION['IdLearner'])) {
 </head>
 
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container">
+        <!-- =============== Navigation ================ -->
         <div class="navigation">
             <ul>
                 <li>
@@ -77,12 +77,17 @@ if (isset($_SESSION['IdLearner'])) {
                     </a>
                 </li>
 
-
-
-
+                <li>
+                    <a href="briefs.php">
+                        <span class="icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </span>
+                        <span class="title">All Briefs</span>
+                    </a>
+                </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../login/">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -159,11 +164,11 @@ if (isset($_SESSION['IdLearner'])) {
                 </div>
             </div>
 
-            <!-- ================ Order Details List ================= -->
+            <!-- ================ briefs history List ================= -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Historique</h2>
+                        <h2>History</h2>
                     </div>
                     <table>
                         <thead>
@@ -249,10 +254,10 @@ if (isset($_SESSION['IdLearner'])) {
                                 <label for="brief_title"></label>
                                 <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
                             </div>
-                           
+
 
                         </div>
-                         <button class="DoneButton">DONE</button>
+                        <button class="DoneButton">DONE</button>
 
                     </div>
 
