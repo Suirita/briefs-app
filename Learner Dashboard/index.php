@@ -34,14 +34,57 @@ if (isset($_SESSION['IdLearner'])) {
 } else {
     echo "IdLearner session variable not set.";
 }
+
+if (isset($_POST['done'])) {
+    $status = $_POST['status'];
+
+    $DATA = $DATABASE->prepare("select * from learner_brief WHERE IdLearner = :IdLearner and IdBrief = :IdBrief");
+    $DATA->bindParam(':IdLearner', $IdLearner);
+    $DATA->bindParam(':IdBrief', $recent_brief['IdBrief']);
+    $DATA->execute();
+
+    if ($DATA->rowCount() == 1) {
+        if ($status != '$status') {
+            $DATA = $DATABASE->prepare("UPDATE learner_brief SET State = :status WHERE IdLearner = :IdLearner and IdBrief = :IdBrief");
+            $DATA->bindParam(':status', $status);
+            $DATA->bindParam(':IdLearner', $IdLearner);
+            $DATA->bindParam(':IdBrief', $recent_brief['IdBrief']);
+            $DATA->execute();
+
+            if ($status == 'Finished') {
+                $URl = $_POST['URL'];
+                $DATA = $DATABASE->prepare("UPDATE learner_brief SET URL = :URL WHERE IdLearner = :IdLearner and IdBrief = :IdBrief");
+                $DATA->bindParam(':URL', $URL);
+                $DATA->bindParam(':IdLearner', $IdLearner);
+                $DATA->bindParam(':IdBrief', $recent_brief['IdBrief']);
+                $DATA->execute();
+            }
+        }
+    } else {
+        if ($status != '$status') {
+            echo $recent_brief['IdBrief'];
+            echo $IdLearner;
+            echo $status;
+
+            $DATA = $DATABASE->prepare("insert into learner_brief(IdLearner,IdBrief,State) values (:IdLearner, :IdBrief, :status)");
+            $DATA->bindParam(':status', $status);
+            $DATA->bindParam(':IdLearner', $IdLearner);
+            $DATA->bindParam(':IdBrief', $recent_brief['IdBrief']);
+            $DATA->execute();
+
+            if ($status == 'Finished') {
+                $DATA = $DATABASE->prepare("insert into learner_brief (:IdLearner, :IdBrief, :status, :URL) values (:IdLearner, :IdBrief, :status, :URL)");
+                $DATA->bindParam(':URL', $URL);
+                $DATA->bindParam(':status', $status);
+                $DATA->bindParam(':IdLearner', $IdLearner);
+                $DATA->bindParam(':IdBrief', $recent_brief['IdBrief']);
+                $DATA->execute();
+            }
+        }
+    }
+}
+
 ?>
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -236,81 +279,73 @@ if (isset($_SESSION['IdLearner'])) {
                         <div class="card-footer">
                             <div class="attachment-btn">
                                 <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
-                                    <p>attachment </p> 
+                                    <p>attachment </p>
                                     <ion-icon name="arrow-down-outline"></ion-icon>
-
-
                                 </a>
                             </div>
-
-
-
-                            <div class="">
-                                <select name="" id="status" class="delete-btn">
-                                    <option value="status" hidden selected>status</option>
-                                    <option value="todo">To Do</option>
-                                    <option value="inprogress">In Progress</option>
-                                    <option value="finished">Finished</option>
-                                </select>
-                            </div>
-
+                            <form method="post">
+                                <div>
+                                    <select name="status" id="status" class="delete-btn">
+                                        <option value="status" hidden selected>status</option>
+                                        <option value="todo">To Do</option>
+                                        <option value="inprogress">In Progress</option>
+                                        <option value="finished">Finished</option>
+                                    </select>
+                                </div>
+                                <div class="input-div one" id="urlInputContainer">
+                                    <div class="div">
+                                        <label for="brief_title"></label>
+                                        <input type="text" class="input" id="brief_title" name="URL" placeholder="Enter the URL">
+                                    </div>
+                                </div>
+                                <button name="done" class="DoneButton">DONE</button>
+                            </form>
                         </div>
-                        <div class="input-div one" id="urlInputContainer">
-                            <div class="div">
-                                <label for="brief_title"></label>
-                                <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
-                            </div>
-
-
-                        </div>
-                        <button class="DoneButton">DONE</button>
 
                     </div>
-
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- =========== Scripts =========  -->
-    <script src="assets/js/main.js"></script>
-    <script>
-        document.getElementById('status').addEventListener('change', function() {
-            var selectElement = this;
-            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-            var color;
+        <!-- =========== Scripts =========  -->
+        <script src="assets/js/main.js"></script>
+        <script>
+            document.getElementById('status').addEventListener('change', function() {
+                var selectElement = this;
+                var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+                var color;
 
-            switch (selectedOption) {
-                case 'finished':
-                    color = '#A8E363';
-                    break;
-                case 'todo':
-                    color = '#EBC85E';
-                    break;
-                case 'inprogress':
-                    color = '#51BBEA';
-                    break;
-                case 'notcompleted':
-                    color = 'red';
-                    break;
-                default:
-                    color = '';
-            }
+                switch (selectedOption) {
+                    case 'finished':
+                        color = '#A8E363';
+                        break;
+                    case 'todo':
+                        color = '#EBC85E';
+                        break;
+                    case 'inprogress':
+                        color = '#51BBEA';
+                        break;
+                    case 'notcompleted':
+                        color = 'red';
+                        break;
+                    default:
+                        color = '';
+                }
 
-            selectElement.style.backgroundColor = color;
+                selectElement.style.backgroundColor = color;
 
-            if (selectedOption == 'finished') {
-                document.getElementById('urlInputContainer').style.display = 'block'
-            } else {
-                document.getElementById('urlInputContainer').style.display = 'none'
-            }
+                if (selectedOption == 'finished') {
+                    document.getElementById('urlInputContainer').style.display = 'block'
+                } else {
+                    document.getElementById('urlInputContainer').style.display = 'none'
+                }
 
-        });
-    </script>
+            });
+        </script>
 
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- ====== ionicons ======= -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
