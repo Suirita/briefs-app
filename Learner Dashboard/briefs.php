@@ -93,14 +93,26 @@ if (isset($_POST['search'])) {
             </div>
             <div>
                 <div class="briefs-container ">
-                    <h1>Upcoming Briefs</h1>
+                    <h1>All Briefs</h1>
                     <div class="cards-container">
                         <?php foreach ($result as $row) { ?>
                             <div class="card">
-                                <h3><?= $row['Title'] ?></h3>
-                                <span>Start Date:<?= $row['StartDate'] ?></span><br>
-                                <span>End Date: <?= $row['EndDate'] ?></span><br>
-                                <span><?= $row['attachment'] ?></span><br>
+                                <div>
+                                    <h3><?= $row['Title'] ?></h3>
+                                    <span>Start Date:<?= $row['StartDate'] ?></span><br>
+                                    <span>End Date: <?= $row['EndDate'] ?></span><br>
+                                    <span><?= $row['attachment'] ?></span><br>
+                                </div>
+                                <div>
+                                    <form method="post">
+                                        <select name="Status">
+                                            <option hidden selected disabled>Status</option>
+                                            <option value="To DO">To Do</option>
+                                            <option value="IN PROGRESS">In Progress</option>
+                                            <option value="FINISHED">Finished</option>
+                                        </select>
+                                    </form>
+                                </div>
                             </div>
                         <?php } ?>
                     </div>

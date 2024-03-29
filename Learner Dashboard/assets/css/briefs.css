@@ -239,6 +239,8 @@ body {
 
 .card {
   position: relative;
+  display: flex;
+  gap: 20px;
   background: var(--white);
   padding: 30px;
   border-radius: 20px;
@@ -247,11 +249,11 @@ body {
   min-height: 150px;
 }
 
-.card > h3 {
+.card > div > h3 {
   color: var(--blue);
 }
 
-.card > span {
+.card > div > span {
   color: var(--black2);
 }
 
