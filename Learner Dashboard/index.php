@@ -182,13 +182,13 @@ if (isset($_SESSION['IdLearner'])) {
 
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                                <tr>
-                                    <td><?php echo $result['FullName'] ?></td>
-                                    <td><?php echo $result['StartDate'] ?></td>
-                                    <td><?php echo $result['EndDate'] ?></td>
-                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                    <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $result['FullName'] ?></td>
+                                <td><?php echo $result['StartDate'] ?></td>
+                                <td><?php echo $result['EndDate'] ?></td>
+                                <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
+                            </tr>
 
                             <?php endforeach; ?>
                         </tbody>
@@ -235,9 +235,14 @@ if (isset($_SESSION['IdLearner'])) {
                         </div>
                         <div class="card-footer">
                             <div class="attachment-btn">
-                                <p><?php echo ['EndDate'] ?></p>
-                                <ion-icon name="arrow-down-outline">
+                                <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
+                                    <p><?php echo $recent_brief['Title']; ?></p>
+                                    <ion-icon name="arrow-down-outline"></ion-icon>
+                                </a>
                             </div>
+
+
+
                             <div class="">
                                 <select name="" id="status" class="delete-btn">status
                                     <option value=""></option>
@@ -252,7 +257,8 @@ if (isset($_SESSION['IdLearner'])) {
                         <div class="input-div one" id="urlInputContainer">
                             <div class="div">
                                 <label for="brief_title"></label>
-                                <input type="text" class="input" id="brief_title" name="brief_title" placeholder="Enter the URL">
+                                <input type="text" class="input" id="brief_title" name="brief_title"
+                                    placeholder="Enter the URL">
                             </div>
 
 
@@ -269,37 +275,37 @@ if (isset($_SESSION['IdLearner'])) {
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
     <script>
-        document.getElementById('status').addEventListener('change', function() {
-            var selectElement = this;
-            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-            var color;
+    document.getElementById('status').addEventListener('change', function() {
+        var selectElement = this;
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        var color;
 
-            switch (selectedOption) {
-                case 'finished':
-                    color = 'green';
-                    break;
-                case 'todo':
-                    color = 'orange';
-                    break;
-                case 'inprogress':
-                    color = 'blue';
-                    break;
-                case 'notcompleted':
-                    color = 'red';
-                    break;
-                default:
-                    color = '';
-            }
+        switch (selectedOption) {
+            case 'finished':
+                color = 'green';
+                break;
+            case 'todo':
+                color = 'orange';
+                break;
+            case 'inprogress':
+                color = 'blue';
+                break;
+            case 'notcompleted':
+                color = 'red';
+                break;
+            default:
+                color = '';
+        }
 
-            selectElement.style.backgroundColor = color;
+        selectElement.style.backgroundColor = color;
 
-            if (selectedOption == 'finished') {
-                document.getElementById('urlInputContainer').style.display = 'block'
-            } else {
-                document.getElementById('urlInputContainer').style.display = 'none'
-            }
+        if (selectedOption == 'finished') {
+            document.getElementById('urlInputContainer').style.display = 'block'
+        } else {
+            document.getElementById('urlInputContainer').style.display = 'none'
+        }
 
-        });
+    });
     </script>
 
     <!-- ====== ionicons ======= -->
