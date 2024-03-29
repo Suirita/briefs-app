@@ -281,6 +281,7 @@ if (isset($_POST['done'])) {
                                 <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
                                     <p>attachment </p>
                                     <ion-icon name="arrow-down-outline"></ion-icon>
+<<<<<<< HEAD
                                 </a>
                             </div>
                             <form method="post">
@@ -300,6 +301,20 @@ if (isset($_POST['done'])) {
                                 </div>
                                 <button name="done" class="DoneButton">DONE</button>
                             </form>
+=======
+
+                                </a>
+                            </div>
+                            <div class="">
+                                <select name="" id="status" class="delete-btn">
+                                    <option value="status" hidden selected>status</option>
+                                    <option value="todo">To Do</option>
+                                    <option value="inprogress">In Progress</option>
+                                    <option value="finished">Finished</option>
+                                </select>
+                            </div>
+
+>>>>>>> e5a5e4615ba1d919e992af775e7c733fac9a9871
                         </div>
 
                     </div>
