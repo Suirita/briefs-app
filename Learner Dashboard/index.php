@@ -239,12 +239,8 @@ if (isset($_SESSION['IdLearner'])) {
                                     <p>attachment </p> 
                                     <ion-icon name="arrow-down-outline"></ion-icon>
 
-
                                 </a>
                             </div>
-
-
-
                             <div class="">
                                 <select name="" id="status" class="delete-btn">
                                     <option value="status" hidden selected>status</option>

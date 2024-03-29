@@ -24,11 +24,34 @@ $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countBriefs = $result['CountBriefs'];
 
-$DATA = $DATABASE->prepare("SELECT * FROM learners inner join learner_brief on learners.IdLearner = learner_brief.IdLearner inner join briefs on learner_brief.IdBrief = briefs.IdBrief");
-$DATA->execute();
-$results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+if(isset($_POST['search'])) {
+    // Get the search input
+    $search_input = $_POST['search_input'];
 
+    // Prepare the SQL query with a WHERE clause to filter by titre
+    $query = "SELECT * FROM learners 
+              INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
+              INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief 
+              WHERE title LIKE :search_input";
+
+    // Prepare and execute the query
+    $DATA = $DATABASE->prepare($query);
+    $DATA->execute(array(':search_input' => '%' . $search_input . '%')); // Use LIKE to perform a partial match
+
+    // Fetch the results
+    $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+} else {
+    // If search form is not submitted, fetch all records
+    $DATA = $DATABASE->prepare("SELECT * FROM learners 
+                                 INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
+                                 INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief");
+    $DATA->execute();
+    $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,7 +123,7 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
                 <div class="user">
-                    <?=$FullName?>
+                    <?= $FullName ?>
                 </div>
             </section>
 
@@ -148,9 +171,21 @@ $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
             <!-- ================ brief state List ================= -->
             <section class="state">
                 <div class="recentOrders">
-                    <div class="cardHeader">
-                        <h2>Brief State</h2>
+                    <div class="titleSearch">
+                        <div class="cardHeader">
+                            <h2>Brief State</h2>
+                        </div>
+
+                        <div class="search">
+                            <label>
+                                <form method="post">
+                                    <input type="text" name="search_input" placeholder="Search here">
+                                    <button type="submit" name="search"><ion-icon name="search-outline"></ion-icon></button>
+                                </form>
+                            </label>
+                        </div>
                     </div>
+
 
                     <table>
                         <thead>
