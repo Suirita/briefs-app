@@ -164,8 +164,13 @@ body {
 }
 .search {
   position: relative;
-  width: 400px;
 
+
+}
+.search h3{
+  position: relative;
+  right: 0%;
+  color: var(--blue);
 }
 
 .search label {

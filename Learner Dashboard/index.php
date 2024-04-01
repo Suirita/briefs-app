@@ -278,13 +278,15 @@ if (isset($_POST['done'])) {
                                 <div class="input-div one" id="urlInputContainer">
                                     <div class="div">
                                         <label for="brief_title"></label>
-                                        <input type="text" class="input" id="brief_title" name="URL" placeholder="Enter the URL">
+                                        <input type="text" class="input" id="brief_title" name="URL"
+                                            placeholder="Enter the URL">
                                     </div>
                                 </div>
                                 <button name="done" class="DoneButton">DONE</button>
                             </form>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
