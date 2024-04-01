@@ -176,16 +176,7 @@ if(isset($_POST['search'])) {
                             <h2>Brief State</h2>
                         </div>
 
-                        <div class="search">
-                            <label>
-                                <form method="post">
-                                    <input type="text" name="search_input" placeholder="Search here">
-                                    <button type="submit" name="search">
-                                        <ion-icon name="search-outline"></ion-icon>
-                                    </button>
-                                </form>
-                            </label>
-                        </div>
+                        <h3><a href="UsersTable.php">View all</a></h3>
                     </div>
 
 

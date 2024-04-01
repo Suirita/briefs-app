@@ -60,9 +60,6 @@ if (isset($_POST['done'])) {
         }
     } else {
         if ($status != '$status') {
-            echo $recent_brief['IdBrief'];
-            echo $IdLearner;
-            echo $status;
 
             $DATA = $DATABASE->prepare("insert into learner_brief(IdLearner,IdBrief,State) values (:IdLearner, :IdBrief, :status)");
             $DATA->bindParam(':status', $status);
