@@ -1,10 +1,8 @@
 <?php
 session_start();
 require_once '../connection/connection.php';
-
 if (isset($_SESSION['IdLearner'])) {
     $IdLearner = $_SESSION['IdLearner'];
-
     $DATA = $DATABASE->prepare("SELECT 
                                     SUM(State = 'Finished') AS Finished,
                                     SUM(State = 'To Do') AS ToDo,
@@ -15,7 +13,6 @@ if (isset($_SESSION['IdLearner'])) {
     $DATA->bindParam(':IdLearner', $IdLearner);
     $DATA->execute();
     $counts = $DATA->fetch(PDO::FETCH_ASSOC);
-
     $result = $DATABASE->prepare("SELECT * FROM learners 
                                             inner join learner_brief on learners.IdLearner = learner_brief.IdLearner 
                                             inner join briefs on learner_brief.IdBrief = briefs.IdBrief 
@@ -23,9 +20,6 @@ if (isset($_SESSION['IdLearner'])) {
     $result->bindParam(':IdLearner', $IdLearner);
     $result->execute();
     $results = $result->fetchAll(PDO::FETCH_ASSOC);
-
-
-
     $currentDate = date("Y-m-d");
     $result = $DATABASE->prepare("SELECT * FROM briefs  where StartDate >= :currentDate ORDER BY StartDate ASC");
     $result->bindParam(':currentDate', $currentDate);
@@ -45,6 +39,10 @@ if (isset($_POST['done'])) {
 
     if ($DATA->rowCount() == 1) {
         if ($status != '$status') {
+            echo $recent_brief['IdBrief'];
+            echo $IdLearner;
+            echo $status;
+
             $DATA = $DATABASE->prepare("UPDATE learner_brief SET State = :status WHERE IdLearner = :IdLearner and IdBrief = :IdBrief");
             $DATA->bindParam(':status', $status);
             $DATA->bindParam(':IdLearner', $IdLearner);
@@ -82,7 +80,11 @@ if (isset($_POST['done'])) {
             }
         }
     }
+    //refreshing the page after the update
+    header("Location: index.php");
 }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -110,7 +112,6 @@ if (isset($_POST['done'])) {
                         <span class="title">BriefSolicode</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -119,7 +120,6 @@ if (isset($_POST['done'])) {
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="briefs.php">
                         <span class="icon">
@@ -128,7 +128,6 @@ if (isset($_POST['done'])) {
                         <span class="title">All Briefs</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="../login/">
                         <span class="icon">
@@ -139,74 +138,61 @@ if (isset($_POST['done'])) {
                 </li>
             </ul>
         </div>
-
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
             </div>
-
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
                 <div class="card" style="background-color: #A8E363;">
-
                     <div>
                         <div class="numbers"><?php echo $counts['Finished']  ?></div>
                         <div class="cardName">Finished</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="book-outline"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card" style="background-color: #EBC85E;">
                     <div>
                         <div class="numbers"><?php echo $counts['ToDo']  ?></div>
                         <div class="cardName">To Do</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="book-outline"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card" style="background-color: #51BBEA;">
                     <div>
                         <div class="numbers"><?php echo $counts['InProgress']  ?></div>
                         <div class="cardName">In Progress</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="book-outline"></ion-icon>
                     </div>
                 </div>
-
                 <div class="card" style="background-color: #F97373;">
                     <div>
                         <div class="numbers"><?php echo $counts['NotCompleted']  ?></div>
                         <div class="cardName">Passed</div>
                     </div>
-
                     <div class="iconBx">
                         <ion-icon name="book-outline"></ion-icon>
                     </div>
                 </div>
             </div>
-
             <!-- ================ briefs history List ================= -->
             <div class="details">
                 <div class="recentOrders">
@@ -222,7 +208,6 @@ if (isset($_POST['done'])) {
                                 <td>Status</td>
                             </tr>
                         </thead>
-
                         <tbody>
                             <?php foreach ($results as $result) : ?>
                                 <tr>
@@ -232,12 +217,10 @@ if (isset($_POST['done'])) {
                                     <?php $state = str_replace(' ', '_', $result['State']); ?>
                                     <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
                                 </tr>
-
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
@@ -281,16 +264,15 @@ if (isset($_POST['done'])) {
                                 <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
                                     <p>attachment </p>
                                     <ion-icon name="arrow-down-outline"></ion-icon>
-<<<<<<< HEAD
                                 </a>
                             </div>
                             <form method="post">
                                 <div>
                                     <select name="status" id="status" class="delete-btn">
                                         <option value="status" hidden selected>status</option>
-                                        <option value="todo">To Do</option>
-                                        <option value="inprogress">In Progress</option>
-                                        <option value="finished">Finished</option>
+                                        <option value="To Do">To Do</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Finished">Finished</option>
                                     </select>
                                 </div>
                                 <div class="input-div one" id="urlInputContainer">
@@ -301,66 +283,51 @@ if (isset($_POST['done'])) {
                                 </div>
                                 <button name="done" class="DoneButton">DONE</button>
                             </form>
-=======
-
-                                </a>
-                            </div>
-                            <div class="">
-                                <select name="" id="status" class="delete-btn">
-                                    <option value="status" hidden selected>status</option>
-                                    <option value="todo">To Do</option>
-                                    <option value="inprogress">In Progress</option>
-                                    <option value="finished">Finished</option>
-                                </select>
-                            </div>
-
->>>>>>> e5a5e4615ba1d919e992af775e7c733fac9a9871
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('status').addEventListener('change', function() {
+            var selectElement = this;
+            var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+            var color;
 
-        <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
-        <script>
-            document.getElementById('status').addEventListener('change', function() {
-                var selectElement = this;
-                var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-                var color;
+            switch (selectedOption) {
+                case 'Finished':
+                    color = '#A8E363';
+                    break;
+                case 'todo':
+                    color = '#EBC85E';
+                    break;
+                case 'inprogress':
+                    color = '#51BBEA';
+                    break;
+                case 'notcompleted':
+                    color = 'red';
+                    break;
+                default:
+                    color = '';
+            }
 
-                switch (selectedOption) {
-                    case 'finished':
-                        color = '#A8E363';
-                        break;
-                    case 'todo':
-                        color = '#EBC85E';
-                        break;
-                    case 'inprogress':
-                        color = '#51BBEA';
-                        break;
-                    case 'notcompleted':
-                        color = 'red';
-                        break;
-                    default:
-                        color = '';
-                }
+            selectElement.style.backgroundColor = color;
 
-                selectElement.style.backgroundColor = color;
+            if (selectedOption == 'Finished') {
+                document.getElementById('urlInputContainer').style.display = 'block'
+            } else {
+                document.getElementById('urlInputContainer').style.display = 'none'
+            }
 
-                if (selectedOption == 'finished') {
-                    document.getElementById('urlInputContainer').style.display = 'block'
-                } else {
-                    document.getElementById('urlInputContainer').style.display = 'none'
-                }
+        });
+    </script>
 
-            });
-        </script>
-
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
