@@ -180,7 +180,9 @@ if(isset($_POST['search'])) {
                             <label>
                                 <form method="post">
                                     <input type="text" name="search_input" placeholder="Search here">
-                                    <button type="submit" name="search"><ion-icon name="search-outline"></ion-icon></button>
+                                    <button type="submit" name="search">
+                                        <ion-icon name="search-outline"></ion-icon>
+                                    </button>
                                 </form>
                             </label>
                         </div>
@@ -199,18 +201,18 @@ if(isset($_POST['search'])) {
                         </thead>
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                                <tr>
-                                    <td><?php echo $result['FullName'] ?></td>
-                                    <td><?php echo $result['Groupe'] ?></td>
-                                    <td><?php echo $result['Title'] ?></td>
-                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                    <td>
-                                        <span class="status <?php echo $state; ?>">
-                                            <?php echo $result['State'] ?>
-                                        </span>
-                                    </td>
-                                    <td><a href=""><?php echo $result['URL'] ?></a></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $result['FullName'] ?></td>
+                                <td><?php echo $result['Groupe'] ?></td>
+                                <td><?php echo $result['Title'] ?></td>
+                                <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                <td>
+                                    <span class="status <?php echo $state; ?>">
+                                        <?php echo $result['State'] ?>
+                                    </span>
+                                </td>
+                                <td><a href=""><?php echo $result['URL'] ?></a></td>
+                            </tr>
                             <?php endforeach; ?>
 
                         </tbody>

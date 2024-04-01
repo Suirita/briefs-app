@@ -225,13 +225,13 @@ if (isset($_POST['done'])) {
 
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                                <tr>
-                                    <td><?php echo $result['Title'] ?></td>
-                                    <td><?php echo $result['StartDate'] ?></td>
-                                    <td><?php echo $result['EndDate'] ?></td>
-                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                    <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
-                                </tr>
+                            <tr>
+                                <td><?php echo $result['Title'] ?></td>
+                                <td><?php echo $result['StartDate'] ?></td>
+                                <td><?php echo $result['EndDate'] ?></td>
+                                <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
+                            </tr>
 
                             <?php endforeach; ?>
                         </tbody>
@@ -281,8 +281,7 @@ if (isset($_POST['done'])) {
                                 <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
                                     <p>attachment </p>
                                     <ion-icon name="arrow-down-outline"></ion-icon>
-<<<<<<< HEAD
-                                </a>
+                                    <<<<<<< HEAD </a>
                             </div>
                             <form method="post">
                                 <div>
@@ -296,71 +295,72 @@ if (isset($_POST['done'])) {
                                 <div class="input-div one" id="urlInputContainer">
                                     <div class="div">
                                         <label for="brief_title"></label>
-                                        <input type="text" class="input" id="brief_title" name="URL" placeholder="Enter the URL">
+                                        <input type="text" class="input" id="brief_title" name="URL"
+                                            placeholder="Enter the URL">
                                     </div>
                                 </div>
                                 <button name="done" class="DoneButton">DONE</button>
                             </form>
-=======
+                            =======
 
-                                </a>
-                            </div>
-                            <div class="">
-                                <select name="" id="status" class="delete-btn">
-                                    <option value="status" hidden selected>status</option>
-                                    <option value="todo">To Do</option>
-                                    <option value="inprogress">In Progress</option>
-                                    <option value="finished">Finished</option>
-                                </select>
-                            </div>
-
->>>>>>> e5a5e4615ba1d919e992af775e7c733fac9a9871
+                            </a>
+                        </div>
+                        <div class="">
+                            <select name="" id="status" class="delete-btn">
+                                <option value="status" hidden selected>status</option>
+                                <option value="todo">To Do</option>
+                                <option value="inprogress">In Progress</option>
+                                <option value="finished">Finished</option>
+                            </select>
                         </div>
 
+                        >>>>>>> e5a5e4615ba1d919e992af775e7c733fac9a9871
                     </div>
+
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- =========== Scripts =========  -->
-        <script src="assets/js/main.js"></script>
-        <script>
-            document.getElementById('status').addEventListener('change', function() {
-                var selectElement = this;
-                var selectedOption = selectElement.options[selectElement.selectedIndex].value;
-                var color;
+    <!-- =========== Scripts =========  -->
+    <script src="assets/js/main.js"></script>
+    <script>
+    document.getElementById('status').addEventListener('change', function() {
+        var selectElement = this;
+        var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+        var color;
 
-                switch (selectedOption) {
-                    case 'finished':
-                        color = '#A8E363';
-                        break;
-                    case 'todo':
-                        color = '#EBC85E';
-                        break;
-                    case 'inprogress':
-                        color = '#51BBEA';
-                        break;
-                    case 'notcompleted':
-                        color = 'red';
-                        break;
-                    default:
-                        color = '';
-                }
+        switch (selectedOption) {
+            case 'finished':
+                color = '#A8E363';
+                break;
+            case 'todo':
+                color = '#EBC85E';
+                break;
+            case 'inprogress':
+                color = '#51BBEA';
+                break;
+            case 'notcompleted':
+                color = 'red';
+                break;
+            default:
+                color = '';
+        }
 
-                selectElement.style.backgroundColor = color;
+        selectElement.style.backgroundColor = color;
 
-                if (selectedOption == 'finished') {
-                    document.getElementById('urlInputContainer').style.display = 'block'
-                } else {
-                    document.getElementById('urlInputContainer').style.display = 'none'
-                }
+        if (selectedOption == 'finished') {
+            document.getElementById('urlInputContainer').style.display = 'block'
+        } else {
+            document.getElementById('urlInputContainer').style.display = 'none'
+        }
 
-            });
-        </script>
+    });
+    </script>
 
-        <!-- ====== ionicons ======= -->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
