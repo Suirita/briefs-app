@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
                 $DATA->execute();
             }
 
-            header('Location: ./edit.php');
+            header('Location: edit.php');
             exit();
         }
     }
