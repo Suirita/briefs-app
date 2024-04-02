@@ -169,7 +169,7 @@ body {
   margin: 0 10px;
 }
 
-.search label  form {
+.search label form {
   position: relative;
   width: 100%;
 }
@@ -185,7 +185,7 @@ body {
   border: 1px solid var(--black2);
 }
 
-.search  label form ion-icon {
+.search label form ion-icon {
   position: absolute;
   top: 0;
   left: 10px;
@@ -225,7 +225,7 @@ body {
 .cards-container {
   margin-top: 30px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
 

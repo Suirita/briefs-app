@@ -220,6 +220,7 @@ if (isset($_POST['done'])) {
                     </div>
                     <div class="custom-card">
                         <div class="card-header">
+                            <h2><?php echo $recent_brief['Title'] ?></h2>
                         </div>
                         <div class="countdown">
                             <p class="countdown-label">It will end in :</p>

@@ -2,12 +2,12 @@
 session_start();
 include('../connection/connection.php');
 
-                        $CURDATE = date('Y-m-d');
+$CURDATE = date('Y-m-d');
 
-                        $DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE StartDate < :CURDATE OR EndDate < :CURDATE ORDER BY StartDate ASC");
-                        $DATA->bindParam(':CURDATE', $CURDATE);
-                        $DATA->execute();
-                        $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+$DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE StartDate < :CURDATE OR EndDate < :CURDATE ORDER BY StartDate ASC");
+$DATA->bindParam(':CURDATE', $CURDATE);
+$DATA->execute();
+$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST['search'])) {
@@ -104,9 +104,8 @@ if (isset($_POST['search'])) {
                                     <h3><?= $row['Title'] ?></h3>
                                     <span>Start Date:<?= $row['StartDate'] ?></span><br>
                                     <span>End Date: <?= $row['EndDate'] ?></span><br>
-                                    <span><?= $row['URL'] ?></span><br>
+                                    <span><?= $row['attachment'] ?></span><br>
                                 </div>
-
                             </div>
                         <?php } ?>
                     </div>
