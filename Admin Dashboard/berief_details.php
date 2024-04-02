@@ -64,91 +64,52 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-              
+
             </section>
             <section>
                 <div class="form_container">
                     <form method="post">
-                        <div class="adding_brief_title_container">
-                            <h1 class="adding_brief_title">Add a new brief</h1>
-                        </div>
-                        <div class="container">
-                            <div class="top">
-                                <div class="title">
-                                    <h1>Title</h1>
-                                    <p><span>10</span></p>
-                                </div>
-                                <div class="genre">TEST</div>
+                      
+                        <div class="top">
+                            <div class="title">
+                                <h2>Title</h2>
                             </div>
-                            <div class="brief">
-                                <div class="movie-description">
-                                    <h2>About the brief</h2>
-                                    <div class="movie-description">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis sunt expedita, minima quos fugiat eos reiciendis unde aspernatur aperiam ab, rerum perspiciatis cum magni! Illo animi nemo asperiores alias.</p>
-                                        <div class="competences">
-                                            <div class="comp">
-                                                <h2>competences</h2>
-                                                <ul>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                    <li>TEST TEST TEST TES</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <a href="">More</a>
-                                        <a href="">Downlaod att</a>
-                                    </div>
+                            <div class="genre">TEST</div>
+                        </div>
+                        <div class="brief">
+                            
+                            <div class="movie-description">
+                                <div></div>
+                                <h2>About the Brief</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis sunt expedita, minima quos fugiat eos reiciendis unde aspernatur aperiam ab, rerum perspiciatis cum magni! Illo animi nemo asperiores alias.</p>
+                                <div class="competences">
+                                    <h3>Competences</h3>
+                                    <ul>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                        <li>TEST TEST TEST TES</li>
+                                    </ul>
+                                </div>
+                                <div class="actions">
+                                    <a href="#" class="download">Download Attachment</a>
                                 </div>
                             </div>
                         </div>
-
+                    </form>
                 </div>
+
             </section>
         </main>
 
 
 
 
-        <div class="container">
-            <div class="top">
-                <div class="title">
-                    <h1>Title</h1>
-                    <p><span>10</span></p>
-                </div>
-                <div class="genre">TEST</div>
-            </div>
-            <div class="brief">
-                <div class="movie-description">
-                    <h2>About the brief</h2>
-                    <div class="movie-description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis sunt expedita, minima quos fugiat eos reiciendis unde aspernatur aperiam ab, rerum perspiciatis cum magni! Illo animi nemo asperiores alias.</p>
-                        <div class="competences">
-                            <div class="comp">
-                                <h2>competences</h2>
-                                <ul>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                    <li>TEST TEST TEST TES</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <a href="">More</a>
-                        <a href="">Downlaod att</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+     
 
 
 
