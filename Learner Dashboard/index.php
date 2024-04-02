@@ -293,10 +293,10 @@ if (isset($_POST['done'])) {
                 case 'Finished':
                     color = '#A8E363';
                     break;
-                case 'todo':
+                case 'To Do':
                     color = '#EBC85E';
                     break;
-                case 'inprogress':
+                case 'In Progress':
                     color = '#51BBEA';
                     break;
                 case 'notcompleted':
