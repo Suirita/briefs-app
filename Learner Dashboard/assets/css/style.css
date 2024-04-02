@@ -37,6 +37,7 @@ body {
   transition: 0.5s;
   overflow: hidden;
 }
+
 .navigation.active {
   width: 80px;
 }
@@ -74,6 +75,7 @@ body {
   text-decoration: none;
   color: var(--white);
 }
+
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
   color: var(--blue);
@@ -87,6 +89,7 @@ body {
   line-height: 75px;
   text-align: center;
 }
+
 .navigation ul li a .icon ion-icon {
   font-size: 1.75rem;
 }
@@ -115,6 +118,7 @@ body {
   box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
+
 .navigation ul li:hover a::after,
 .navigation ul li.hovered a::after {
   content: "";
@@ -138,6 +142,7 @@ body {
   background: var(--white);
   transition: 0.5s;
 }
+
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
@@ -253,6 +258,7 @@ body {
 .cardBox .card:hover {
   background: var(--blue);
 }
+
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
@@ -273,7 +279,7 @@ body {
 .details .recentOrders {
   position: relative;
   /* display: grid; */
- min-height: 10px;
+  min-height: 10px;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -284,12 +290,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
- 
+
 }
+
 .cardHeader h2 {
   font-weight: 600;
   color: var(--blue);
 }
+
 .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
@@ -375,6 +383,7 @@ body {
   font-size: 14px;
   font-weight: 500;
 }
+
 .custom-card {
   border-radius: 1.5rem;
   padding: 1.25rem;
@@ -404,93 +413,104 @@ body {
   color: var(--black2);
 }
 
- .countdown-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    gap: 0.75rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-  }
-
-  .countdown-item {
-    align-items: center;
-    gap: 0.1rem;
-    font-size: 1rem;
-    color: #6b7280;
-  }
-
-  .countdown-number {
-    background-color: #ffffff;
-    color: var(--blue);
-    border: 1px solid var(--blue);
-    padding: 0.75rem;
-    border-radius: 50%;
-  }
-
-  .countdown-unit {
-    font-weight: 400;
-  }
-
-.card-footer {
+.countdown-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
   display: flex;
+}
+
+.countdown-item {
+  align-items: center;
+  gap: 0.1rem;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+.countdown-number {
+  background-color: #ffffff;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 0.75rem;
+  border-radius: 50%;
+}
+
+.countdown-unit {
+  font-weight: 400;
+}
+
+.card-footer form {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow items to wrap to the next line */
   justify-content: space-between;
   border-top: 1px solid #979797;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
 }
 
+.attachment-btn,
+.delete-btn {
+  flex: 1;
+  /* Each takes up equal space */
+  margin-right: 1rem;
+  /* Add margin between them */
+}
+
+.attachment-btn,
+.delete-btn,
+.input-div {
+  margin-bottom: 1rem;
+  /* Add space between elements */
+}
+
+.input-div {
+  margin: 0.2rem !important;
+}
+
 .attachment-btn {
   display: flex;
   align-items: center;
-  font-weight: 0.6rem;
   gap: 1rem;
   background-color: #60a5fa;
   color: #fff;
   padding: 0.75rem;
   border-radius: 0.5rem;
   cursor: pointer;
+}
 
-}
 .attachment-btn a {
-text-decoration: none ;
-color: var(--white);
-display: flex;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
   align-items: center;
-  font-weight: 0.6rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
+
 .attachment-btn p {
-  font-weight: 0.6rem;
+  margin: 0;
 }
 
 .delete-btn {
   display: flex;
-    align-items: center;
-    gap: 1rem;    margin-left: 9px;
-    background-color: #60a5fa;
-    color: #fff;
-    padding: 0.9rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    border: none;
-}
-
-.recentCustomers {
-  position: relative;
-  /* display: grid; */
-  max-height: 500px;
-  padding: 20px;
-  background: var(--white);
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 20px;
+  align-items: center;
+  gap: 1rem;
+  background-color: #60a5fa;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: none;
 }
 
 .input-div>div {
+  width: 100%;
+  /* Ensure input takes full width */
   position: relative;
-  height: 45px;
-  margin: 30px 0 20px 0;
+  margin-bottom: 20px;
 }
 
 .input-div>div>label {
@@ -503,26 +523,15 @@ display: flex;
   transition: 0.3s;
 }
 
-
-
 .input-div>div>input {
-  position: absolute;
-  left: 0;
-  top: 0;
   width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-  border-radius: 15px;
-  background: none;
-  border: 1px solid green;
-  padding: 0.5rem 0.7rem;
-  font-size: 1.2rem;
-  color: #555;
+  padding: 10px;
+  border: 1px solid #60a5fa;
+  border-radius: 40px;
+  font-size: 16px;
 }
+
 .DoneButton {
-   display: block;
   width: 100%;
   height: 50px;
   border-radius: 25px;
@@ -543,17 +552,21 @@ display: flex;
   .navigation {
     left: -300px;
   }
+
   .navigation.active {
     width: 300px;
     left: 0;
   }
+
   .main {
     width: 100%;
     left: 0;
   }
+
   .main.active {
     left: 300px;
   }
+
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -563,9 +576,11 @@ display: flex;
   .details {
     grid-template-columns: 1fr;
   }
+
   .recentOrders {
     overflow-x: auto;
   }
+
   .status.inProgress {
     white-space: nowrap;
   }
@@ -575,24 +590,30 @@ display: flex;
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
+
   .cardHeader h2 {
     font-size: 20px;
   }
+
   .user {
     min-width: 40px;
   }
+
   .navigation {
     width: 100%;
     left: -100%;
     z-index: 1000;
   }
+
   .navigation.active {
     width: 100%;
     left: 0;
   }
+
   .toggle {
     z-index: 10001;
   }
+
   .main.active .toggle {
     color: #fff;
     position: fixed;

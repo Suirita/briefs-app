@@ -60,9 +60,6 @@ if (isset($_POST['done'])) {
         }
     } else {
         if ($status != '$status') {
-            echo $recent_brief['IdBrief'];
-            echo $IdLearner;
-            echo $status;
 
             $DATA = $DATABASE->prepare("insert into learner_brief(IdLearner,IdBrief,State) values (:IdLearner, :IdBrief, :status)");
             $DATA->bindParam(':status', $status);
@@ -144,12 +141,7 @@ if (isset($_POST['done'])) {
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
+
                 <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
                 </div>
@@ -228,7 +220,6 @@ if (isset($_POST['done'])) {
                     </div>
                     <div class="custom-card">
                         <div class="card-header">
-                            <h2><?php echo $recent_brief['Title'] ?></h2>
                         </div>
                         <div class="countdown">
                             <p class="countdown-label">It will end in :</p>
@@ -260,21 +251,19 @@ if (isset($_POST['done'])) {
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <div class="attachment-btn">
-                                <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
-                                    <p>attachment </p>
-                                    <ion-icon name="arrow-down-outline"></ion-icon>
-                                </a>
-                            </div>
                             <form method="post">
-                                <div>
-                                    <select name="status" id="status" class="delete-btn">
-                                        <option value="status" hidden selected>status</option>
-                                        <option value="To Do">To Do</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="Finished">Finished</option>
-                                    </select>
+                                <div class="attachment-btn">
+                                    <a href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
+                                        <p>attachment </p>
+                                        <ion-icon name="arrow-down-outline"></ion-icon>
+                                    </a>
                                 </div>
+                                <select name="status" id="status" class="delete-btn">
+                                    <option value="status" hidden selected>status</option>
+                                    <option value="To Do">To Do</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Finished">Finished</option>
+                                </select>
                                 <div class="input-div one" id="urlInputContainer">
                                     <div class="div">
                                         <label for="brief_title"></label>
@@ -284,6 +273,7 @@ if (isset($_POST['done'])) {
                                 <button name="done" class="DoneButton">DONE</button>
                             </form>
                         </div>
+
                     </div>
 
                 </div>

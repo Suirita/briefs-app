@@ -9,7 +9,8 @@ if (isset($_POST['search'])) {
     $query = "SELECT * FROM learners 
               INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
               INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief 
-              WHERE title LIKE :search_input";
+              WHERE title LIKE :search_input
+              ORDER BY Title ASC";
 
     // Prepare and execute the query
     $DATA = $DATABASE->prepare($query);
@@ -21,9 +22,19 @@ if (isset($_POST['search'])) {
     // If search form is not submitted, fetch all records
     $DATA = $DATABASE->prepare("SELECT * FROM learners 
                                  INNER JOIN learner_brief ON learners.IdLearner = learner_brief.IdLearner 
-                                 INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief");
+                                 INNER JOIN briefs ON learner_brief.IdBrief = briefs.IdBrief
+                                 ORDER BY Title ASC");
     $DATA->execute();
     $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+}
+if (isset($_SESSION['IdTrainer'])){
+    $IdTrainer = $_SESSION['IdTrainer'];
+
+    $DATA = $DATABASE -> prepare("SELECT * FROM Trainers WHERE IdTrainer = :IdTrainer");
+    $DATA -> bindParam(':IdTrainer', $IdTrainer);
+    $DATA -> execute();
+    $Trainer = $DATA->fetch(PDO::FETCH_ASSOC);
+
 }
 ?>
 <!DOCTYPE html>
@@ -42,7 +53,7 @@ if (isset($_POST['search'])) {
 </head>
 
 <body>
-    
+
 
 
 
@@ -61,89 +72,56 @@ if (isset($_POST['search'])) {
                 <div class="order">
                     <div class="head">
                         <h3>Recent Orders</h3>
-                        <i class='bx bx-search'></i>
-                        <i class='bx bx-filter'></i>
+
+                        <div class="search">
+                            <label>
+                                <form method="post">
+                                    <input type="text" name="search_input" placeholder="Search here">
+                                    <button type="submit" name="search"><i class='bx bx-search'></i></button>
+                                </form>
+                            </label>
+                        </div>
+
+
                     </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>Date Order</th>
-                                <th>Status</th>
+                                <th>Full name</th>
+                                <th>Group</th>
+                                <th>Brief</th>
+                                <th>State</th>
+                                <th>URL</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status process">Process</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/people.png">
-                                    <p>John Doe</p>
-                                </td>
-                                <td>01-10-2021</td>
-                                <td><span class="status completed">Completed</span></td>
-                            </tr>
+                            <?php foreach ($results as $result) : ?>
+                                <tr>
+                                    <td>
+                                        <p><?php echo $result['FullName'] ?></p>
+                                    </td>
+                                    <td><?php echo $result['Groupe'] ?></td>
+                                    <td><?php echo $result['Title'] ?></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']) ?>
+                                    <td><span class="status <?php echo $state ?>"><?php echo $result['State'] ?></span></td>
+                                    <td><?php echo $result['URL'] ?></td>
+
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="todo">
-                    <div class="head">
-                        <h3>Todos</h3>
-                        <i class='bx bx-plus'></i>
-                        <i class='bx bx-filter'></i>
+
+                    <div class="profile-card">
+                        <div class="image">
+                            <img src="" alt="" class="profile-img">
+                        </div>
+                        <div class="text-data">
+                            <span class="name"><?php echo $Trainer['FullName'] ?></span>
+                            <span class="rule">Trainer in SOLICODE</span>
+                        </div>
                     </div>
-                    <ul class="todo-list">
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                        <li class="not-completed">
-                            <p>Todo List</p>
-                            <i class='bx bx-dots-vertical-rounded'></i>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </main>

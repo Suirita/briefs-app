@@ -2,12 +2,13 @@
 session_start();
 include('../connection/connection.php');
 
-$CURDATE = date('Y-m-d');
+                        $CURDATE = date('Y-m-d');
 
-$DATA = $DATABASE->prepare("SELECT idBrief, Title,StartDate, EndDate, attachment FROM briefs where startDate <= :CURDATE ORDER BY StartDate ASC");
-$DATA->bindParam(':CURDATE', $CURDATE);
-$DATA->execute();
-$result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+                        $DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE StartDate < :CURDATE OR EndDate < :CURDATE ORDER BY StartDate ASC");
+                        $DATA->bindParam(':CURDATE', $CURDATE);
+                        $DATA->execute();
+                        $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
+
 
 if (isset($_POST['search'])) {
     $search_input = '%' . $_POST['search_input'] . '%';
@@ -82,8 +83,10 @@ if (isset($_POST['search'])) {
 
                 <div class="search">
                     <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
+                        <form method="post">
+                            <input type="text" name="search_input" placeholder="Search here">
+                            <button type="submit" name="search"><i class='bx bx-search'></i></button>
+                        </form>
                     </label>
                 </div>
 
@@ -101,24 +104,17 @@ if (isset($_POST['search'])) {
                                     <h3><?= $row['Title'] ?></h3>
                                     <span>Start Date:<?= $row['StartDate'] ?></span><br>
                                     <span>End Date: <?= $row['EndDate'] ?></span><br>
-                                    <span><?= $row['attachment'] ?></span><br>
+                                    <span><?= $row['URL'] ?></span><br>
                                 </div>
-                                <div>
-                                    <form method="post">
-                                        <select name="Status">
-                                            <option hidden selected disabled>Status</option>
-                                            <option value="To DO">To Do</option>
-                                            <option value="IN PROGRESS">In Progress</option>
-                                            <option value="FINISHED">Finished</option>
-                                        </select>
-                                    </form>
-                                </div>
+
                             </div>
                         <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="assets/js/main.js"></script>
+
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
