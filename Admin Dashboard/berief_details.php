@@ -1,4 +1,45 @@
+<?php
+session_start();
+include('../connection/connection.php');
 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve the hidden ID from the POST data
+    if (isset($_POST['IdBrief'])) {
+        $idBrief = $_POST['IdBrief'];
+        $DATA = $DATABASE->prepare("SELECT briefs.*, trainers.*
+    FROM briefs
+    INNER JOIN trainers ON briefs.IdTrainer = trainers.IdTrainer
+    WHERE briefs.IdBrief = :idBrief
+");
+        $DATA->bindParam(":idBrief", $idBrief);
+        $DATA->execute();
+        $result = $DATA->fetch(PDO::FETCH_ASSOC);
+
+
+        $DATA = $DATABASE->prepare("SELECT *
+    FROM brief_skills
+    INNER JOIN skills ON brief_skills.IdSkill = skills.IdSkill
+    WHERE brief_skills.IdBrief = :idBrief
+");
+        $DATA->bindParam(":idBrief", $idBrief);
+        $DATA->execute();
+        $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+        // Now you can use $result as needed, such as displaying it or processing it further
+
+    }
+}
+
+
+
+
+
+
+
+?>
 
 
 <!DOCTYPE html>
@@ -51,14 +92,7 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="./edit.php">
-                        <span class="icon">
-                            <ion-icon name="book-outline"></ion-icon>
-                        </span>
-                        <span class="title">All briefs</span>
-                    </a>
-                </li>
+              
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -83,31 +117,29 @@
 
                         <div class="top">
                             <div class="title">
-                                <h2>Title</h2>
+                                <h2><?php echo $result['Title'] ?></h2>
                             </div>
-                            <div class="genre"><span>Trainer: </span>TEST</div>
+                            <div class="genre"><span>Trainer: </span><?php echo $result['FullName'] ?></div>
                         </div>
                         <div class="brief">
 
                             <div class="movie-description">
                                 <div></div>
                                 <h2>About the Brief</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae veritatis sunt expedita, minima quos fugiat eos reiciendis unde aspernatur aperiam ab, rerum perspiciatis cum magni! Illo animi nemo asperiores alias.</p>
+                                <p><?php echo $result['Description'] ?></p>
                                 <div class="competences">
                                     <h3>Competences</h3>
-                                    <ul>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
-                                        <li>TEST TEST TEST TES</li>
+                                    <ul><?php
+                                        foreach ($results as $row) {
+                                            echo "<li>{$row['titled']}</li>";
+                                        } ?>
                                     </ul>
                                 </div>
                                 <div class="actions">
-                                    <a href="#" class="download">Download Attachment</a>
+                                    <a class="download" href="FileDownload.php?brief_id=<?php echo $recent_brief['IdBrief']; ?>" download>
+                                        <p>attachment </p>
+                                        <ion-icon name="arrow-down-outline"></ion-icon>
+                                    </a>
                                 </div>
                             </div>
                         </div>

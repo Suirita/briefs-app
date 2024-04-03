@@ -2,7 +2,7 @@
 require_once '../connection/connection.php';
 session_start();
 
-$DATA = "select FullName from trainers where IdTrainer = :IdTrainer";
+$DATA = "select FullName, images from trainers where IdTrainer = :IdTrainer";
 $DATA = $DATABASE->prepare($DATA);
 $DATA->bindParam(":IdTrainer", $_SESSION['IdTrainer']);
 $DATA->execute();
@@ -104,14 +104,7 @@ if (isset($_POST['search'])) {
                         <span class="title">Edit</span>
                     </a>
                 </li>
-                <li>
-                    <a href="./edit.php">
-                        <span class="icon">
-                            <ion-icon name="book-outline"></ion-icon>
-                        </span>
-                        <span class="title">All briefs</span>
-                    </a>
-                </li>
+                
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -130,7 +123,10 @@ if (isset($_POST['search'])) {
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
                 <div class="user">
-                    <?= $FullName ?>
+                    <a href="trainer.php">
+                        <img src="../Images/FahdFoto.jpg" alt="" width="50px" height="50px" style="border-radius: 50%; margin-top:15px;">
+                    </a>
+
                 </div>
             </section>
 

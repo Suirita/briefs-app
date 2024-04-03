@@ -205,6 +205,10 @@ body {
   position: relative;
   font-size: 24px;
   margin: 20px;
+  
+}
+.user a img {
+  border-radius: 50%;
 }
 
 .titleSearch{

@@ -156,9 +156,7 @@ body {
 }
 
 .form_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+   min-height: 800px;
     margin: 20px 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     padding: 30px;
@@ -221,7 +219,7 @@ body {
 .actions {
     margin-top: 20px;
     right: 0;
-    position: absolute;
+   
     right: 5%;
     bottom: 10%;
 }
@@ -240,6 +238,13 @@ body {
 
 .actions .download {
     background-color: var(--blue);
+    display: flex;
+    color: var(--white);
+    width: fit-content;
+    
+}
+.actions .download p{
+    color: var(--white);
 }
 
 .actions a:hover {
