@@ -43,31 +43,17 @@ if (isset($_SESSION['IdTrainer'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/TableUserStyle.css">
-
     <title>AdminHub</title>
 </head>
 
 <body>
-
-
-
-
     <!-- CONTENT -->
     <section id="content">
-
-
         <!-- MAIN -->
         <main>
-
-
-
-
-
             <div class="table-data">
                 <div class="order">
                     <div class="head">
@@ -125,9 +111,7 @@ if (isset($_SESSION['IdTrainer'])){
                 </div>
             </div>
         </main>
-        <!-- MAIN -->
     </section>
-    <!-- CONTENT -->
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

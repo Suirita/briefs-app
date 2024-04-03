@@ -129,7 +129,6 @@ if(isset($_POST['search'])) {
 
             <!-- ======================= Cards ================== -->
             <section class="cardBox">
-
                 <div class="card">
                     <div>
                         <!-- PHP NUMBER -->
@@ -175,10 +174,8 @@ if(isset($_POST['search'])) {
                         <div class="cardHeader">
                             <h2>Brief State</h2>
                         </div>
-
                         <h3><a href="UsersTable.php">View all</a></h3>
                     </div>
-
 
                     <table>
                         <thead>
