@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -82,7 +85,7 @@
                             <div class="title">
                                 <h2>Title</h2>
                             </div>
-                            <div class="genre">TEST</div>
+                            <div class="genre"><span>Trainer: </span>TEST</div>
                         </div>
                         <div class="brief">
 
