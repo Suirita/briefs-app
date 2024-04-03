@@ -49,6 +49,14 @@
                 </li>
 
                 <li>
+                    <a href="./edit.php">
+                        <span class="icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </span>
+                        <span class="title">All briefs</span>
+                    </a>
+                </li>
+                <li>
                     <a href="../login/index.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
@@ -69,7 +77,7 @@
             <section>
                 <div class="form_container">
                     <form method="post">
-                      
+
                         <div class="top">
                             <div class="title">
                                 <h2>Title</h2>
@@ -77,7 +85,7 @@
                             <div class="genre">TEST</div>
                         </div>
                         <div class="brief">
-                            
+
                             <div class="movie-description">
                                 <div></div>
                                 <h2>About the Brief</h2>
@@ -109,7 +117,7 @@
 
 
 
-     
+
 
 
 

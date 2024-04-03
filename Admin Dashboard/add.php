@@ -112,6 +112,14 @@ if (isset($_POST['submit'])) {
                 </li>
 
                 <li>
+                    <a href="./edit.php">
+                        <span class="icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </span>
+                        <span class="title">All briefs</span>
+                    </a>
+                </li>
+                <li>
                     <a href="../login/index.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>

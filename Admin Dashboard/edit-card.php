@@ -133,7 +133,14 @@ if (isset($_POST['submit'])) {
                         <span class="title">Edit</span>
                     </a>
                 </li>
-
+                <li>
+                    <a href="./edit.php">
+                        <span class="icon">
+                            <ion-icon name="book-outline"></ion-icon>
+                        </span>
+                        <span class="title">All briefs</span>
+                    </a>
+                </li>
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -165,27 +172,23 @@ if (isset($_POST['submit'])) {
                         <div class="input-div one">
                             <div class="div">
                                 <label for="brief_title">Brief Title</label>
-                                <input type="text" class="input" id="brief_title" name="brief_title"
-                                    value="<?php echo $result['Title']; ?>">
+                                <input type="text" class="input" id="brief_title" name="brief_title" value="<?php echo $result['Title']; ?>">
                             </div>
                         </div>
                         <div class="date-form">
                             <div>
                                 <label for="brief_start_date" class="date-form-label">Start Date</label><br>
-                                <input type="date" id="brief_start_date" name="brief_start_date"
-                                    value="<?php echo $result['StartDate']; ?>">
+                                <input type="date" id="brief_start_date" name="brief_start_date" value="<?php echo $result['StartDate']; ?>">
                             </div>
                             <div>
                                 <label for="brief_end_date" class="date-form-label">End Date</label><br>
-                                <input type="date" id="brief_end_date" name="brief_end_date"
-                                    value="<?php echo $result['EndDate']; ?>">
+                                <input type="date" id="brief_end_date" name="brief_end_date" value="<?php echo $result['EndDate']; ?>">
                             </div>
                         </div>
                         <div class="input-div one">
                             <div class="div">
                                 <label for=" brief_URL">Brief URL</label>
-                                <input type="file" class="input" id="brief_URL" name="brief_URL"
-                                    value="<?php echo $result['attachment']; ?>">
+                                <input type="file" class="input" id="brief_URL" name="brief_URL" value="<?php echo $result['attachment']; ?>">
                             </div>
                         </div>
                         <div>

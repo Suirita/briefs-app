@@ -27,14 +27,13 @@ if (isset($_POST['search'])) {
     $DATA->execute();
     $results = $DATA->fetchAll(PDO::FETCH_ASSOC);
 }
-if (isset($_SESSION['IdTrainer'])){
+if (isset($_SESSION['IdTrainer'])) {
     $IdTrainer = $_SESSION['IdTrainer'];
 
-    $DATA = $DATABASE -> prepare("SELECT * FROM Trainers WHERE IdTrainer = :IdTrainer");
-    $DATA -> bindParam(':IdTrainer', $IdTrainer);
-    $DATA -> execute();
+    $DATA = $DATABASE->prepare("SELECT * FROM Trainers WHERE IdTrainer = :IdTrainer");
+    $DATA->bindParam(':IdTrainer', $IdTrainer);
+    $DATA->execute();
     $Trainer = $DATA->fetch(PDO::FETCH_ASSOC);
-
 }
 ?>
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ if (isset($_SESSION['IdTrainer'])){
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/TableUserStyle.css">
 
-    <title>AdminHub</title>
+    <title>Users</title>
 </head>
 
 <body>
@@ -70,8 +69,11 @@ if (isset($_SESSION['IdTrainer'])){
 
             <div class="table-data">
                 <div class="order">
+                    <button class="Back-button"><a href="index.php">Back</a></button>
                     <div class="head">
-                        <h3>Recent Orders</h3>
+
+
+                        <h3>Briefs historique</h3>
 
                         <div class="search">
                             <label>
@@ -115,7 +117,7 @@ if (isset($_SESSION['IdTrainer'])){
 
                     <div class="profile-card">
                         <div class="image">
-                            <img src="" alt="" class="profile-img">
+                            <img src="../Images/<?php echo $Trainer['images'] ?>" alt="" class="profile-img">
                         </div>
                         <div class="text-data">
                             <span class="name"><?php echo $Trainer['FullName'] ?></span>
