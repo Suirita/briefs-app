@@ -2,7 +2,7 @@
 require_once '../connection/connection.php';
 session_start();
 
-$DATA = "select FullName from trainers where IdTrainer = :IdTrainer";
+$DATA = "select FullName, images from trainers where IdTrainer = :IdTrainer";
 $DATA = $DATABASE->prepare($DATA);
 $DATA->bindParam(":IdTrainer", $_SESSION['IdTrainer']);
 $DATA->execute();
@@ -24,7 +24,7 @@ $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $countBriefs = $result['CountBriefs'];
 
-if(isset($_POST['search'])) {
+if (isset($_POST['search'])) {
     // Get the search input
     $search_input = $_POST['search_input'];
 
@@ -104,7 +104,7 @@ if(isset($_POST['search'])) {
                         <span class="title">Edit</span>
                     </a>
                 </li>
-
+                
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -123,7 +123,10 @@ if(isset($_POST['search'])) {
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
                 <div class="user">
-                    <?= $FullName ?>
+                    <a href="trainer.php">
+                        <img src="../Images/FahdFoto.jpg" alt="" width="50px" height="50px" style="border-radius: 50%; margin-top:15px;">
+                    </a>
+
                 </div>
             </section>
 
@@ -189,18 +192,18 @@ if(isset($_POST['search'])) {
                         </thead>
                         <tbody>
                             <?php foreach ($results as $result) : ?>
-                            <tr>
-                                <td><?php echo $result['FullName'] ?></td>
-                                <td><?php echo $result['Groupe'] ?></td>
-                                <td><?php echo $result['Title'] ?></td>
-                                <?php $state = str_replace(' ', '_', $result['State']); ?>
-                                <td>
-                                    <span class="status <?php echo $state; ?>">
-                                        <?php echo $result['State'] ?>
-                                    </span>
-                                </td>
-                                <td><a href=""><?php echo $result['URL'] ?></a></td>
-                            </tr>
+                                <tr>
+                                    <td><?php echo $result['FullName'] ?></td>
+                                    <td><?php echo $result['Groupe'] ?></td>
+                                    <td><?php echo $result['Title'] ?></td>
+                                    <?php $state = str_replace(' ', '_', $result['State']); ?>
+                                    <td>
+                                        <span class="status <?php echo $state; ?>">
+                                            <?php echo $result['State'] ?>
+                                        </span>
+                                    </td>
+                                    <td><a href=""><?php echo $result['URL'] ?></a></td>
+                                </tr>
                             <?php endforeach; ?>
 
                         </tbody>

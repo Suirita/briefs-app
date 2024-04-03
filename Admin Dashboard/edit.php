@@ -90,7 +90,7 @@ if (isset($_POST['search'])) {
                         <span class="title">Edit</span>
                     </a>
                 </li>
-
+              
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -129,9 +129,11 @@ if (isset($_POST['search'])) {
                         <?php foreach ($result as $row) { ?>
                             <div class="card">
                                 <h3><?= $row['Title'] ?></h3>
-                                <span>Start Date:<?= $row['StartDate'] ?></span><br>
-                                <span>End Date: <?= $row['EndDate'] ?></span><br>
-                                <span><?= $row['attachment'] ?></span><br>
+                                <h4><span>Trainer :</span> <?= $FullName ?></h4>
+                                <div class="Date">
+                                    <p><span>Start Date:</span><?= $row['StartDate'] ?></p>
+                                    <p><span>End Date:</span> <?= $row['EndDate'] ?></p>
+                                </div>
                                 <form action="edit-card.php" method="post">
                                     <input type="text" name="idBrief" value="<?= $row['idBrief'] ?>" hidden>
                                     <button type="submit" name="edit" class="edit-icon-button"><ion-icon class="edit-icon" name="create-outline"></ion-icon></button>
@@ -141,7 +143,15 @@ if (isset($_POST['search'])) {
                                     <input type="text" name="idBrief" value="<?= $row['idBrief'] ?>" hidden>
                                     <button type="submit" name="trash" class="trash-icon-button"><ion-icon class="trash-icon" name="trash-outline"></ion-icon></button>
                                 </form>
+                                <div>
+                                    <form action="berief_details.php" method="post">
+                                        <input type="text" name="IdBrief" value="<?= $row['idBrief'] ?>" hidden>
+                                        <button class="Back-button">Details</button>
+                                    </form>
+
+                                </div>
                             </div>
+
                         <?php } ?>
                     </div>
                 </div>

@@ -227,25 +227,25 @@ if (isset($_POST['done'])) {
                             <ul class="countdown-list">
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">02 </div>
+                                        <div id="days" class="countdown-number"></div>
                                         <span class="countdown-unit">Days</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">05</div>
+                                        <div id="hours" class="countdown-number"></div>
                                         <span class="countdown-unit">Hours</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">56</div>
+                                        <div id="minutes" class="countdown-number"></div>
                                         <span class="countdown-unit">Min</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="countdown-item">
-                                        <div class="countdown-number">26</div>
+                                        <div id="seconds" class="countdown-number"></div>
                                         <span class="countdown-unit">Sec</span>
                                     </div>
                                 </li>
@@ -293,10 +293,10 @@ if (isset($_POST['done'])) {
                 case 'Finished':
                     color = '#A8E363';
                     break;
-                case 'todo':
+                case 'To Do':
                     color = '#EBC85E';
                     break;
-                case 'inprogress':
+                case 'In Progress':
                     color = '#51BBEA';
                     break;
                 case 'notcompleted':
@@ -315,6 +315,29 @@ if (isset($_POST['done'])) {
             }
 
         });
+
+        function updateCountdown() {
+            var now = new Date().getTime();
+            var eventDate = new Date("<?php echo $recent_brief['EndDate']; ?>").getTime();
+            var distance = eventDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the countdown
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial call to display the countdown immediately
+        updateCountdown();
     </script>
 
     <!-- ====== ionicons ======= -->

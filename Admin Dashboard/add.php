@@ -15,6 +15,7 @@ $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['submit'])) {
     $Title = $_POST['brief_title'];
+    $description = $_POST['brief_description'];
     $Start_Date = $_POST['brief_start_date'];
     $End_Date = $_POST['brief_end_date'];
     $URL = $_POST['brief_URL'];
@@ -33,9 +34,10 @@ if (isset($_POST['submit'])) {
         if ($Start_Date > $End_Date) {
             $error = "the start date cannot be after the end date";
         } else {
-            $DATA = "INSERT INTO briefs (Title, StartDate, EndDate, attachment, IdTrainer) VALUES (:brief_title, :brief_start_date, :brief_end_date, :brief_URL, :id)";
+            $DATA = "INSERT INTO briefs (Title, StartDate, EndDate, attachment, IdTrainer, Description) VALUES (:brief_title, :brief_start_date, :brief_end_date, :brief_URL, :id, :description)";
             $DATA = $DATABASE->prepare($DATA);
             $DATA->bindParam(':brief_title', $Title);
+            $DATA->bindParam(':description', $description);
             $DATA->bindParam(':brief_start_date', $Start_Date);
             $DATA->bindParam(':brief_end_date', $End_Date);
             $DATA->bindParam(':brief_URL', $URL);
@@ -111,6 +113,7 @@ if (isset($_POST['submit'])) {
                     </a>
                 </li>
 
+               
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
@@ -143,6 +146,12 @@ if (isset($_POST['submit'])) {
                             <div class="div">
                                 <label for="brief_title">Brief Title</label>
                                 <input type="text" class="input" id="brief_title" name="brief_title">
+                            </div>
+                        </div>
+                        <div class="input-div one">
+                            <div class="div">
+                                <label for="brief_title">Brief Description</label>
+                                <input type="text" class="input" id="brief_title" name="brief_description">
                             </div>
                         </div>
                         <div class="date-form">
