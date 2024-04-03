@@ -9,10 +9,10 @@ $DATA->execute();
 $result = $DATA->fetch(PDO::FETCH_ASSOC);
 $FullName = $result['FullName'];
 
+
 if (isset($_POST['edit'])) {
     $idBrief = $_POST['idBrief'];
     $_SESSION['idBrief'] = $idBrief;
-
 
     $DATA = $DATABASE->prepare("SELECT * FROM briefs WHERE IdBrief = :idBrief");
     $DATA->bindParam(':idBrief', $idBrief);
@@ -44,18 +44,23 @@ if (isset($_POST['submit'])) {
         $Skills = [];
     }
 
-    if (empty($Title) || empty($Start_Date) || empty($End_Date) || empty($URL) || $Skills == []) {
+    if (empty($Title) || empty($Start_Date) || empty($End_Date) || $Skills == []) {
         $error = "All fields are required";
     } else {
         if ($Start_Date > $End_Date) {
             $error = "the start date cannot be after the end date";
         } else {
-            $DATA = "update briefs set Title = :brief_title, StartDate = :brief_start_date, EndDate = :brief_end_date, attachment = :brief_URL where IdBrief = :idBrief";
-            $DATA = $DATABASE->prepare($DATA);
+            if (!empty($URL)) {
+                $DATA = "update briefs set Title = :brief_title, StartDate = :brief_start_date, EndDate = :brief_end_date, attachment = :brief_URL where IdBrief = :idBrief";
+                $DATA = $DATABASE->prepare($DATA);
+                $DATA->bindParam(':brief_URL', $URL);
+            } else {
+                $DATA = "update briefs set Title = :brief_title, StartDate = :brief_start_date, EndDate = :brief_end_date where IdBrief = :idBrief";
+                $DATA = $DATABASE->prepare($DATA);
+            }
             $DATA->bindParam(':brief_title', $Title);
             $DATA->bindParam(':brief_start_date', $Start_Date);
             $DATA->bindParam(':brief_end_date', $End_Date);
-            $DATA->bindParam(':brief_URL', $URL);
             $DATA->bindParam(':idBrief', $idBrief);
             $DATA->execute();
 
@@ -63,7 +68,6 @@ if (isset($_POST['submit'])) {
             $DATA = $DATABASE->prepare($DATA);
             $DATA->bindParam(':IdBrief', $idBrief);
             $DATA->execute();
-
 
             $DATA = "insert into brief_skills values (:IdBrief, :IdSkill)";
             $DATA = $DATABASE->prepare($DATA);
@@ -133,7 +137,7 @@ if (isset($_POST['submit'])) {
                         <span class="title">Edit</span>
                     </a>
                 </li>
- 
+
                 <li>
                     <a href="../login/index.php">
                         <span class="icon">
