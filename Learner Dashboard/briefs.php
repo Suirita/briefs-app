@@ -4,7 +4,7 @@ include('../connection/connection.php');
 
 $CURDATE = date('Y-m-d');
 
-$DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE StartDate < :CURDATE OR EndDate < :CURDATE ORDER BY StartDate ASC");
+$DATA = $DATABASE->prepare("SELECT idBrief, Title, StartDate, EndDate, attachment FROM briefs WHERE StartDate <= :CURDATE AND EndDate < :CURDATE ORDER BY StartDate ASC");
 $DATA->bindParam(':CURDATE', $CURDATE);
 $DATA->execute();
 $result = $DATA->fetchAll(PDO::FETCH_ASSOC);
